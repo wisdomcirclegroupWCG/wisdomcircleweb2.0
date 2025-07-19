@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wisdom Circle Group</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom CSS for gradient breathing effect and scroll animations */
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden; /* Prevent horizontal scroll due to animations */
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+        }
+
+        /* CSS Variables for Light and Dark Mode */
+        :root {
+            --bg-color: #f9fafb; /* Light mode background (gray-50) */
+            --text-color: #374151; /* Light mode text (gray-800) */
+            --nav-bg: #ffffff;
+            --nav-text: #4b5563; /* gray-700 */
+            --section-bg-light: #ffffff;
+            --section-text-light: #4b5563; /* gray-700 */
+            --section-border-light: #e5e7eb; /* gray-200 */
+            --ai-bg: #e0f2fe; /* indigo-50 */
+            --ai-border: #93c5fd; /* indigo-200 */
+            --ai-input-bg: #f3f4f6; /* gray-100 */
+            --ai-input-border: #d1d5db; /* gray-300 */
+            --ai-input-text: #374151; /* gray-800 */
+            --mission-bg: #4338ca; /* indigo-700 */
+            --mission-text: #ffffff;
+            --mission-generator-bg: #4f46e5; /* indigo-600 */
+            --mission-generator-border: #6366f1; /* indigo-500 */
+            --rate-us-bg: #eef2ff; /* indigo-100 */
+            --rate-us-inner-bg: #ffffff;
+            --rate-us-inner-border: #e5e7eb; /* gray-200 */
+            --footer-bg: #1f2937; /* gray-800 */
+            --footer-text: #d1d5db; /* gray-400 */
+            --footer-heading: #818cf8; /* indigo-400 */
+            --footer-link: #9ca3af; /* gray-400 */
+            --footer-link-hover: #ffffff;
+            --footer-input-bg: #374151; /* gray-700 */
+            --footer-input-border: #4b5563; /* gray-600 */
+            --footer-input-placeholder: #9ca3af; /* gray-400 */
+            --footer-icon: #a5b4fc; /* indigo-300 */
+            --team-card-bg: #f3f4f6; /* gray-100 */
+            --team-card-border: #e5e7eb; /* gray-200 */
+            --team-heading-text: #4338ca; /* indigo-800 */
+            --team-subheading-text: #4f46e5; /* indigo-600 */
+            --team-body-text: #4b5563; /* gray-600 */
+            --team-image-border: #a5b4fc; /* indigo-300 */
+            --purple-bg: #f3e8ff; /* purple-50 */
+            --purple-border: #d8b4fe; /* purple-200 */
+            --purple-text: #6b21a8; /* purple-800 */
+            --purple-loading-text: #8b5cf6; /* purple-600 */
+        }
+
+        .dark {
+            --bg-color: #1a202c; /* Dark mode background */
+            --text-color: #e2e8f0; /* Dark mode text */
+            --nav-bg: #2d3748;
+            --nav-text: #a0aec0;
+            --section-bg-light: #2d3748;
+            --section-text-light: #cbd5e0; /* gray-300 */
+            --section-border-light: #4a5568;
+            --ai-bg: #2a4365;
+            --ai-border: #4299e1;
+            --ai-input-bg: #1a202c;
+            --ai-input-border: #4a5568;
+            --ai-input-text: #e2e8f0;
+            --mission-bg: #1a202c;
+            --mission-text: #e2e8f0;
+            --mission-generator-bg: #2d3748;
+            --mission-generator-border: #4299e1;
+            --rate-us-bg: #2d3748;
+            --rate-us-inner-bg: #1a202c;
+            --rate-us-inner-border: #4a5568;
+            --footer-bg: #1a202c;
+            --footer-text: #a0aec0;
+            --footer-heading: #63b3ed;
+            --footer-link: #a0aec0;
+            --footer-link-hover: #e2e8f0;
+            --footer-input-bg: #2d3748;
+            --footer-input-border: #4a5568;
+            --footer-input-placeholder: #a0aec0;
+            --footer-icon: #63b3ed;
+            --team-card-bg: #2d3748;
+            --team-card-border: #4a5568;
+            --team-heading-text: #63b3ed;
+            --team-subheading-text: #9f7aea;
+            --team-body-text: #cbd5e0;
+            --team-image-border: #63b3ed;
+            --purple-bg: #4a044e; /* dark purple */
+            --purple-border: #8b5cf6; /* purple-500 */
+            --purple-text: #e2e8f0;
+            --purple-loading-text: #c4b5fd; /* purple-300 */
+        }
+
+        /* Apply variables to Tailwind classes for consistency */
+        .bg-gray-50 { background-color: var(--bg-color); }
+        .text-gray-800 { color: var(--text-color); }
+        .bg-white { background-color: var(--nav-bg); }
+        .text-gray-700 { color: var(--nav-text); }
+        .bg-gray-100 { background-color: var(--team-card-bg); } /* Used for team cards */
+        .border-gray-200 { border-color: var(--section-border-light); }
+        .border-gray-300 { border-color: var(--ai-input-border); }
+        .bg-indigo-50 { background-color: var(--ai-bg); }
+        .border-indigo-200 { border-color: var(--ai-border); }
+        .bg-indigo-700 { background-color: var(--mission-bg); }
+        .text-white { color: var(--mission-text); } /* This will be overridden for specific elements */
+        .bg-indigo-600 { background-color: var(--mission-generator-bg); }
+        .border-indigo-500 { border-color: var(--mission-generator-border); }
+        .bg-indigo-100 { background-color: var(--rate-us-bg); }
+        .bg-gray-800 { background-color: var(--footer-bg); }
+        .text-gray-400 { color: var(--footer-text); }
+        .text-indigo-400 { color: var(--footer-heading); }
+        .hover\:text-white:hover { color: var(--footer-link-hover); }
+        .bg-gray-700 { background-color: var(--footer-input-bg); }
+        .border-gray-600 { border-color: var(--footer-input-border); }
+        .placeholder-gray-400::placeholder { color: var(--footer-input-placeholder); }
+        .text-indigo-300 { color: var(--footer-icon); }
+        .text-indigo-800 { color: var(--team-heading-text); }
+        .text-indigo-600 { color: var(--team-subheading-text); }
+        .text-gray-600 { color: var(--team-body-text); }
+        .border-indigo-300 { border-color: var(--team-image-border); }
+        .bg-purple-50 { background-color: var(--purple-bg); }
+        .border-purple-200 { border-color: var(--purple-border); }
+        .text-purple-600 { color: var(--purple-loading-text); }
+
+
+        /* Gradient breathing effect for hero section */
+        @keyframes gradient-breathing {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .gradient-breathing-bg {
+            background: linear-gradient(-45deg, #FF6B6B, #FFD166, #6BFFB8, #6B84FF);
+            background-size: 400% 400%;
+            animation: gradient-breathing 15s ease infinite;
+        }
+
+        /* Navigation gradient effect on hover */
+        .nav-link-gradient {
+            /* Default text color will be applied by Tailwind classes like text-gray-700 or dark:text-gray-200 */
+            transition: color 0.3s ease-in-out; /* Smooth transition for text color */
+            /* For the gradient background that will be clipped */
+            background-image: linear-gradient(to right, #34D399, #EF4444);
+            background-size: 0% 100%; /* Start with 0% width */
+            background-repeat: no-repeat;
+            transition: background-size 0.3s ease-in-out;
+        }
+
+        .nav-link-gradient:hover {
+            background-size: 100% 100%; /* Expand to 100% width on hover */
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent; /* Make text transparent to show clipped background */
+        }
+
+        /* Scroll animation classes */
+        .section-hidden {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .section-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* LLM Feature Toggle content animation (for Mission Generator and Feedback Analyzer) */
+        .llm-feature-hidden {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out, padding 0.5s ease-out;
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+
+        .llm-feature-visible {
+            max-height: 500px; /* Adjust based on content height */
+            padding-top: 2rem; /* Restore padding */
+            padding-bottom: 2rem; /* Restore padding */
+        }
+
+        /* Section content toggle animation */
+        .section-content-hidden {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out, opacity 0.5s ease-out;
+            opacity: 0;
+        }
+
+        .section-content-visible {
+            max-height: 1000px; /* Sufficiently large to show content */
+            opacity: 1;
+        }
+
+
+        /* Custom scrollbar for better aesthetics */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-color);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        /* Modal specific styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background-color: var(--nav-bg);
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            width: 90%;
+            max-width: 600px;
+            transform: translateY(-50px);
+            opacity: 0;
+            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+            position: relative;
+            color: var(--text-color); /* Ensure modal content text adapts */
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .modal-close-button {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--nav-text);
+            transition: color 0.2s ease-in-out;
+        }
+
+        .modal-close-button:hover {
+            color: #EF4444; /* red-500 */
+        }
+
+        /* AI Response specific styling for scroll */
+        #ai-response {
+            max-height: 250px; /* Set a max height */
+            overflow-y: auto; /* Enable vertical scrolling */
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Navigation Bar -->
+    <nav class="bg-white shadow-md fixed w-full z-50 py-4 px-6 md:px-10">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-indigo-600 rounded-md p-2 hover:bg-indigo-50 transition-colors">WCG.in</a>
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="#hero" class="nav-link nav-link-gradient font-medium text-lg text-gray-700 dark:text-gray-200">Home</a>
+                <!-- AI Assistant link now just triggers the modal -->
+                <a href="#" id="nav-ai-assistant" class="nav-link nav-link-gradient font-medium text-lg text-gray-700 dark:text-gray-200">AI Assistant</a>
+                <a href="#mission" class="nav-link nav-link-gradient font-medium text-lg text-gray-700 dark:text-gray-200">Mission</a>
+                <a href="ebook.html" class="nav-link nav-link-gradient font-medium text-lg text-gray-700 dark:text-gray-200">E book</a>
+                <a href="#rate-us" class="nav-link nav-link-gradient font-medium text-lg text-gray-700 dark:text-gray-200">Rate Us</a>
+                <a href="blog.html" class="nav-link nav-link-gradient font-medium text-lg text-gray-700 dark:text-gray-200">Blog</a>
+                <!-- Dark Mode Toggle Button -->
+                <button id="theme-toggle" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors">
+                    <svg id="sun-icon" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-5 6a1 1 0 110-2h1a1 1 0 110 2h-1zm-4.243-2.121a1 1 0 010 1.414L9.343 17a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM3 11a1 1 0 100-2H2a1 1 0 100 2h1zm9-8.707V3a1 1 0 01-1-1h-1a1 1 0 01-1 1v.293a1 1 0 01.293.707 1 1 0 01-.293.707H12a1 1 0 011-1V3.293z" />
+                    </svg>
+                    <svg id="moon-icon" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-5 6a1 110-2h1a1 1 0 110 2h-1zm-4.243-2.121a1 1 0 010 1.414L9.343 17a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM3 11a1 1 0 100-2H2a1 1 0 100 2h1z" clip-rule="evenodd" />
+                    </svg>
+                </button>
+            </div>
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="md:hidden text-gray-700 dark:text-gray-200 hover:text-indigo-600 dark:hover:text-indigo-400 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden mt-4 space-y-2 px-4 pb-4">
+            <a href="#hero" class="block text-gray-700 dark:text-gray-200 hover:bg-indigo-50 dark:hover:bg-gray-700 hover:text-indigo-600 dark:hover:text-indigo-400 px-3 py-2 rounded-md text-base font-medium transition-colors">Home</a>
+            <a href="#" id="mobile-nav-ai-assistant" class="block text-gray-700 dark:text-gray-200 hover:bg-indigo-50 dark:hover:bg-gray-700 hover:text-indigo-600 dark:hover:text-indigo-400 px-3 py-2 rounded-md text-base font-medium transition-colors">AI Assistant</a>
+            <a href="#mission" class="block text-gray-700 dark:text-gray-200 hover:bg-indigo-50 dark:hover:bg-gray-700 hover:text-indigo-600 dark:hover:text-indigo-400 px-3 py-2 rounded-md text-base font-medium transition-colors">Mission</a>
+            <a href="#team" class="block text-gray-700 dark:text-gray-200 hover:bg-indigo-50 dark:hover:bg-gray-700 hover:text-indigo-600 dark:hover:text-indigo-400 px-3 py-2 rounded-md text-base font-medium transition-colors">Team</a>
+            <a href="#rate-us" class="block text-gray-700 dark:text-gray-200 hover:bg-indigo-50 dark:hover:bg-gray-700 hover:text-indigo-600 dark:hover:text-indigo-400 px-3 py-2 rounded-md text-base font-medium transition-colors">Rate Us</a>
+            <a href="blog.html" class="block text-gray-700 dark:text-gray-200 hover:bg-indigo-50 dark:hover:bg-gray-700 hover:text-indigo-600 dark:hover:text-indigo-400 px-3 py-2 rounded-md text-base font-medium transition-colors">Blog</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="gradient-breathing-bg min-h-screen flex items-center justify-center text-center text-white py-20 px-4 rounded-b-3xl shadow-xl overflow-hidden section-hidden">
+        <div class="max-w-4xl mx-auto flex flex-col justify-center items-center h-full">
+            <h1 class="text-5xl md:text-7xl font-extrabold leading-tight mb-6 drop-shadow-lg">
+                <span class="block">Welcome to</span>
+                <span class="block text-yellow-300">Wisdom Cirle Group</span>
+            </h1>
+            <p class="text-xl md:text-2xl mb-10 opacity-90 drop-shadow-md">
+                Welcome to Wisdom Circle Group (WCG.in), your hub for collaborative learning, innovation, and community growth. We foster an environment where knowledge is shared freely and ideas flourish to create impactful achievements.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#" id="hero-ai-toggle-button" class="bg-white text-indigo-700 hover:bg-indigo-700 hover:text-white transition-all duration-300 ease-in-out font-bold py-4 px-8 rounded-full shadow-lg text-lg transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-white focus:ring-opacity-50">
+                    Explore Our Vision
+                </a>
+                <a href="blog.html" class="bg-indigo-600 text-white hover:bg-white hover:text-indigo-700 transition-all duration-300 ease-in-out font-bold py-4 px-8 rounded-full shadow-lg text-lg transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-indigo-500 focus:ring-opacity-50">
+                    Read Our Blog
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Toggle Section (now just a trigger for the modal) -->
+    <section id="ai-toggle" class="py-20 px-4 bg-white dark:bg-section-bg-light rounded-xl shadow-lg my-16 mx-auto max-w-6xl section-hidden text-center">
+        <h2 class="text-4xl font-bold text-indigo-700 dark:text-indigo-400 mb-10">Engage with WCG AI</h2>
+        <p class="text-lg text-gray-600 dark:text-section-text-light mb-8 max-w-2xl mx-auto">
+            Our AI is here to provide insights, answer your questions, and spark new ideas. Click the button below to open the WCG AI Assistant!
+        </p>
+        <button id="open-ai-modal-button" class="bg-indigo-600 text-white font-bold py-3 px-8 rounded-full hover:bg-indigo-700 transition-colors duration-300 shadow-md transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-indigo-500 focus:ring-opacity-50">
+            Open WCG AI Assistant
+        </button>
+    </section>
+
+    <!-- WCG AI Assistant Modal -->
+    <div id="wcg-ai-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close-button" id="close-ai-modal-button">&times;</button>
+            <h3 class="text-3xl font-bold text-indigo-700 dark:text-indigo-400 mb-6 text-center">WCG AI Bro</h3>
+            <textarea id="ai-input" class="w-full p-4 mb-6 border border-gray-300 dark:border-ai-input-border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all resize-y min-h-[100px] text-lg bg-white dark:bg-ai-input-bg text-gray-800 dark:text-ai-input-text" placeholder="Type your question here..."></textarea>
+            <button id="ai-ask-button" class="bg-indigo-600 text-white font-bold py-3 px-8 rounded-full hover:bg-indigo-700 transition-colors duration-300 shadow-md transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-indigo-500 focus:ring-opacity-50 w-full sm:w-auto">
+                Ask AI
+            </button>
+            <div id="ai-response" class="mt-8 p-6 bg-indigo-50 dark:bg-ai-bg border border-indigo-200 dark:border-ai-border rounded-lg text-left text-gray-800 dark:text-text-color min-h-[150px] flex items-center justify-center text-lg italic animate-pulse-once">
+                Your AI response will appear here...
+            </div>
+            <div id="ai-loading" class="hidden mt-4 text-indigo-600 dark:text-indigo-400 font-medium">
+                <svg class="animate-spin h-6 w-6 mr-3 inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                Thinking...
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Mission Section -->
+    <section id="mission" class="py-20 px-4 bg-indigo-700 dark:bg-mission-bg text-white rounded-xl shadow-lg my-16 mx-auto max-w-6xl section-hidden">
+        <div class="container mx-auto text-center">
+            <h2 class="text-4xl font-bold mb-8">Our Mission</h2>
+            <button id="toggle-mission-content" class="bg-white text-indigo-700 hover:bg-indigo-700 hover:text-white transition-all duration-300 ease-in-out font-bold py-3 px-8 rounded-full shadow-md transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-white focus:ring-opacity-50 mt-4 mb-8">
+                Toggle Mission Details
+            </button>
+            <div id="mission-content-area" class="section-content-hidden">
+                <p class="text-lg leading-relaxed max-w-3xl mx-auto opacity-90">
+                    At Wisdom Circle Group, our mission is to foster a vibrant community where knowledge is shared, ideas flourish, and innovation thrives. We believe in the power of collective intelligence to solve complex challenges and create a better future for everyone. Through collaborative projects, insightful discussions, and continuous learning, we aim to empower individuals and organizations to reach their full potential.
+                </p>
+                <p class="text-lg leading-relaxed max-w-3xl mx-auto mt-4 opacity-90">
+                    We are committed to building bridges between diverse perspectives, encouraging critical thinking, and promoting ethical practices in all our endeavors. Our goal is to be a beacon of wisdom, guiding our members towards impactful contributions and sustainable growth.
+                </p>
+            </div>
+            <button id="toggle-mission-generator" class="bg-white text-indigo-700 hover:bg-indigo-700 hover:text-white transition-all duration-300 ease-in-out font-bold py-3 px-8 rounded-full shadow-md transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-white focus:ring-opacity-50 mt-10">
+                ✨ Generate Mission Statement ✨
+            </button>
+
+            <div id="mission-generator-area" class="llm-feature-hidden bg-indigo-600 dark:bg-mission-generator-bg p-8 rounded-2xl shadow-inner border border-indigo-500 dark:border-mission-generator-border mt-8 text-left">
+                <h3 class="text-2xl font-bold mb-4 text-white dark:text-mission-text">Craft Your Mission Statement</h3>
+                <textarea id="mission-input" class="w-full p-4 mb-6 border border-indigo-400 dark:border-indigo-700 rounded-lg focus:ring-2 focus:ring-white focus:border-transparent transition-all resize-y min-h-[100px] text-lg text-gray-800 dark:text-ai-input-text bg-white dark:bg-ai-input-bg" placeholder="Enter keywords or a brief idea for your mission statement (e.g., 'community, innovation, growth')..."></textarea>
+                <button id="generate-mission-button" class="bg-yellow-300 text-indigo-800 font-bold py-3 px-8 rounded-full hover:bg-yellow-400 transition-colors duration-300 shadow-md transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-yellow-300 focus:ring-opacity-50">
+                    Generate Mission
+                </button>
+                <div id="mission-response" class="mt-8 p-6 bg-indigo-500 border border-indigo-400 rounded-lg text-left text-white dark:text-mission-text min-h-[150px] flex items-center justify-center text-lg italic animate-pulse-once">
+                    Your generated mission statement will appear here...
+                </div>
+                <div id="mission-loading" class="hidden mt-4 text-white dark:text-mission-text font-medium">
+                    <svg class="animate-spin h-6 w-6 mr-3 inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    Generating...
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="py-20 px-4 bg-white dark:bg-section-bg-light rounded-xl shadow-lg my-16 mx-auto max-w-6xl section-hidden">
+        <div class="container mx-auto text-center">
+            <h2 class="text-4xl font-bold text-indigo-700 dark:text-indigo-400 mb-12">Meet Our Visionary Team</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+                <!-- Team Member 1 -->
+                <div class="bg-gray-100 dark:bg-team-card-bg p-8 rounded-2xl shadow-md transform hover:scale-105 transition-transform duration-300 border border-gray-200 dark:border-team-card-border">
+                    <img src="https://placehold.co/150x150/A78BFA/ffffff?text=BK" alt="B.Krishna" class="w-32 h-32 rounded-full mx-auto mb-6 object-cover border-4 border-indigo-300 dark:border-team-image-border shadow-lg">
+                    <h3 class="text-2xl font-semibold text-indigo-800 dark:text-team-heading-text mb-2">B. Krishna</h3>
+                    <p class="text-indigo-600 dark:text-team-subheading-text font-medium mb-4">Founder & CEO</p>
+                    <p class="text-gray-600 dark:text-team-body-text leading-relaxed text-sm">
+                        Visionary leader driving WCG.in's mission forward with strategic insight and passion.
+                    </p>
+                </div>
+                <!-- Team Member 2 -->
+                <div class="bg-gray-100 dark:bg-team-card-bg p-8 rounded-2xl shadow-md transform hover:scale-105 transition-transform duration-300 border border-gray-200 dark:border-team-card-border">
+                    <img src="https://placehold.co/150x150/A78BFA/ffffff?text=HD" alt="H.Dishanth" class="w-32 h-32 rounded-full mx-auto mb-6 object-cover border-4 border-indigo-300 dark:border-team-image-border shadow-lg">
+                    <h3 class="text-2xl font-semibold text-indigo-800 dark:text-team-heading-text mb-2">H. Dishanth</h3>
+                    <p class="text-indigo-600 dark:text-team-subheading-text font-medium mb-4">Head of Operations</p>
+                    <p class="text-gray-600 dark:text-team-body-text leading-relaxed text-sm">
+                        Ensures seamless execution and operational excellence across all WCG.in initiatives.
+                    </p>
+                </div>
+                <!-- Team Member 3 -->
+                <div class="bg-gray-100 dark:bg-team-card-bg p-8 rounded-2xl shadow-md transform hover:scale-105 transition-transform duration-300 border border-gray-200 dark:border-team-card-border">
+                    <img src="https://placehold.co/150x150/A78BFA/ffffff?text=SK" alt="S.Karthikeyan" class="w-32 h-32 rounded-full mx-auto mb-6 object-cover border-4 border-indigo-300 dark:border-team-image-border shadow-lg">
+                    <h3 class="text-2xl font-semibold text-indigo-800 dark:text-team-heading-text mb-2">S. Karthikeyan</h3>
+                    <p class="text-indigo-600 dark:text-team-subheading-text font-medium mb-4">Lead AI Developer</p>
+                    <p class="text-gray-600 dark:text-team-body-text leading-relaxed text-sm">
+                        Innovator behind WCG AI, constantly pushing the boundaries of intelligent systems.
+                    </p>
+                </div>
+                <!-- Team Member 4 -->
+                <div class="bg-gray-100 dark:bg-team-card-bg p-8 rounded-2xl shadow-md transform hover:scale-105 transition-transform duration-300 border border-gray-200 dark:border-team-card-border">
+                    <img src="https://placehold.co/150x150/A78BFA/ffffff?text=MS" alt="M.Sandeep" class="w-32 h-32 rounded-full mx-auto mb-6 object-cover border-4 border-indigo-300 dark:border-team-image-border shadow-lg">
+                    <h3 class="text-2xl font-semibold text-indigo-800 dark:text-team-heading-text mb-2">M. Sandeep</h3>
+                    <p class="text-indigo-600 dark:text-team-subheading-text font-medium mb-4">Community Manager</p>
+                    <p class="text-gray-600 dark:text-team-body-text leading-relaxed text-sm">
+                        Fosters a vibrant and engaging community, connecting members and facilitating collaboration.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rate Us Section -->
+    <section id="rate-us" class="py-20 px-4 bg-indigo-100 dark:bg-rate-us-bg rounded-xl shadow-lg my-16 mx-auto max-w-6xl section-hidden">
+        <div class="container mx-auto text-center">
+            <h2 class="text-4xl font-bold text-indigo-700 dark:text-indigo-400 mb-10">Rate Your Experience</h2>
+            <button id="toggle-rate-us-content" class="bg-indigo-600 text-white hover:bg-indigo-700 transition-all duration-300 ease-in-out font-bold py-3 px-8 rounded-full shadow-md transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-indigo-500 focus:ring-opacity-50 mt-4 mb-8">
+                Share Your Feedback
+            </button>
+            <div id="rate-us-content-area" class="section-content-hidden bg-white dark:bg-rate-us-inner-bg p-8 rounded-2xl shadow-inner border border-gray-200 dark:border-rate-us-inner-border">
+                <p class="text-lg text-gray-600 dark:text-section-text-light mb-8 max-w-2xl mx-auto">
+                    Your feedback helps us improve! Please share your thoughts and rate your experience with WCG.in.
+                </p>
+                <textarea id="feedback-message" class="w-full p-4 mb-6 border border-gray-300 dark:border-ai-input-border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all resize-y min-h-[120px] text-lg bg-white dark:bg-ai-input-bg text-gray-800 dark:text-ai-input-text" placeholder="Share your feedback here..."></textarea>
+
+                <div class="flex justify-center space-x-4 mb-8">
+                    <!-- Rating Emojis -->
+                    <button class="rating-emoji text-5xl transition-transform transform hover:scale-110 focus:outline-none" data-rating="1">😡</button>
+                    <button class="rating-emoji text-5xl transition-transform transform hover:scale-110 focus:outline-none" data-rating="2">🙁</button>
+                    <button class="rating-emoji text-5xl transition-transform transform hover:scale-110 focus:outline-none" data-rating="3">😐</button>
+                    <button class="rating-emoji text-5xl transition-transform transform hover:scale-110 focus:outline-none" data-rating="4">😊</button>
+                    <button class="rating-emoji text-5xl transition-transform transform hover:scale-110 focus:outline-none" data-rating="5">🤩</button>
+                </div>
+                <input type="hidden" id="selected-rating" value="0">
+
+                <div class="flex flex-col sm:flex-row justify-center gap-4 mt-6">
+                    <button id="submit-feedback" class="bg-indigo-600 text-white font-bold py-3 px-8 rounded-full hover:bg-indigo-700 transition-colors duration-300 shadow-md transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-indigo-500 focus:ring-opacity-50">
+                        Submit Feedback
+                    </button>
+                    <button id="analyze-feedback-button" class="bg-purple-600 text-white font-bold py-3 px-8 rounded-full hover:bg-purple-700 transition-colors duration-300 shadow-md transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-purple-500 focus:ring-opacity-50">
+                        ✨ Analyze Feedback ✨
+                    </button>
+                </div>
+
+                <div id="feedback-message-box" class="hidden mt-6 p-4 rounded-lg text-sm font-medium"></div>
+                <div id="feedback-analysis-area" class="llm-feature-hidden mt-6 p-4 bg-purple-50 dark:bg-purple-bg border border-purple-200 dark:border-purple-border rounded-lg text-left text-gray-800 dark:text-purple-text min-h-[100px] flex items-center justify-center text-lg italic animate-pulse-once">
+                    AI analysis will appear here...
+                </div>
+                <div id="feedback-analysis-loading" class="hidden mt-4 text-purple-600 dark:text-purple-loading-text font-medium">
+                    <svg class="animate-spin h-6 w-6 mr-3 inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    Analyzing...
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 dark:bg-footer-bg text-white py-10 px-4 rounded-t-3xl shadow-inner">
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-left">
+            <!-- About Section -->
+            <div>
+                <h3 class="text-xl font-bold mb-4 text-indigo-400 dark:text-footer-heading">About WCG.in</h3>
+                <p class="text-gray-400 dark:text-footer-text text-sm leading-relaxed">
+                    Wisdom Circle Group is dedicated to fostering a community of learners and innovators, sharing knowledge and driving positive change through collective intelligence.
+                </p>
+            </div>
+
+            <!-- Contact Section -->
+            <div>
+                <h3 class="text-xl font-bold mb-4 text-indigo-400 dark:text-footer-heading">Contact Us</h3>
+                <p class="text-gray-400 dark:text-footer-text text-sm mb-2 flex items-center">
+                    <svg class="w-4 h-4 mr-2 text-indigo-300 dark:text-footer-icon" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zM12.75 6a.75.75 0 00-1.5 0v6.25a.75.75 0 00.22.53l3.25 3.25a.75.75 0 101.06-1.06L13.5 12.25V6z" clip-rule="evenodd" />
+                    </svg>
+                    <span class="font-semibold">Address:</span> 123 Wisdom Lane, Knowledge City, WC 56789
+                </p>
+                <p class="text-gray-400 dark:text-footer-text text-sm mb-2 flex items-center">
+                    <svg class="w-4 h-4 mr-2 text-indigo-300 dark:text-footer-icon" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M1.5 4.5a3 3 0 013-3h15a3 3 0 013 3v15a3 3 0 01-3 3H4.5a3 3 0 01-3-3V4.5zM12 7.5a.75.75 0 01.75.75v3.75a.75.75 0 01-1.5 0V8.25A.75.75 0 0112 7.5zM12 16.5a.75.75 0 00-1.5 0v.008a.75.75 0 001.5 0v-.008z" clip-rule="evenodd" />
+                    </svg>
+                    <span class="font-semibold">Phone:</span> +91 98765 43210
+                </p>
+                <p class="text-gray-400 dark:text-footer-text text-sm flex items-center">
+                    <svg class="w-4 h-4 mr-2 text-indigo-300 dark:text-footer-icon" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M1.5 4.5a3 3 0 013-3h15a3 3 0 013 3v15a3 3 0 01-3 3H4.5a3 3 0 01-3-3V4.5zM4.5 3a1.5 1.5 0 00-1.5 1.5V6h18V4.5a1.5 1.5 0 00-1.5-1.5H4.5zM3 9v10.5a1.5 1.5 0 001.5 1.5h15a1.5 1.5 0 001.5-1.5V9H3zM12 11.25a.75.75 0 00-1.5 0v1.5a.75.75 0 001.5 0v-1.5z" clip-rule="evenodd" />
+                    </svg>
+                    <span class="font-semibold">Email:</span> <a href="mailto:info@wcg.in" class="hover:text-white transition-colors">info@wcg.in</a>
+                </p>
+            </div>
+
+            <!-- Quick Links Section -->
+            <div>
+                <h3 class="text-xl font-bold mb-4 text-indigo-400 dark:text-footer-heading">Quick Links</h3>
+                <ul class="space-y-2">
+                    <li><a href="#" class="text-gray-400 dark:text-footer-link hover:text-white dark:hover:text-footer-link-hover transition-colors text-sm">Privacy Policy</a></li>
+                    <li><a href="#" class="text-gray-400 dark:text-footer-link hover:text-white dark:hover:text-footer-link-hover transition-colors text-sm">Terms of Service</a></li>
+                    <li><a href="#" class="text-gray-400 dark:text-footer-link hover:text-white dark:hover:text-footer-link-hover transition-colors text-sm">Support</a></li>
+                    <li><a href="blog.html" class="text-gray-400 dark:text-footer-link hover:text-white dark:hover:text-footer-link-hover transition-colors text-sm">Our Blog</a></li>
+                </ul>
+            </div>
+
+            <!-- Newsletter & Social Media Section -->
+            <div>
+                <h3 class="text-xl font-bold mb-4 text-indigo-400 dark:text-footer-heading">Stay Connected</h3>
+                <p class="text-gray-400 dark:text-footer-text text-sm mb-4">
+                    Stay updated with our latest insights and news.
+                </p>
+                <form class="flex flex-col gap-3 mb-6">
+                    <div class="relative">
+                        <input type="email" placeholder="Your email address" class="p-3 pl-10 rounded-md bg-gray-700 dark:bg-footer-input-bg text-white dark:text-ai-input-text border border-gray-600 dark:border-footer-input-border focus:outline-none focus:ring-2 focus:ring-indigo-500 placeholder-gray-400 dark:placeholder-footer-input-placeholder text-sm w-full">
+                        <svg class="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-indigo-300 dark:text-footer-icon" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.695 4.347a3 3 0 01-2.61 0L1.5 8.67zM22.5 6.542V5.25a3 3 0 00-3-3h-15a3 3 0 00-3 3v1.292L12 11.292l10.5-4.75z" />
+                        </svg>
+                    </div>
+                    <button type="submit" class="bg-indigo-600 text-white font-bold py-3 px-6 rounded-md hover:bg-indigo-700 transition-colors duration-300 shadow-md text-sm">
+                        Subscribe
+                    </button>
+                </form>
+
+                <!-- Social Media Icons -->
+                <div class="flex space-x-4 justify-center md:justify-start">
+                    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="text-gray-400 dark:text-footer-link hover:text-white dark:hover:text-footer-link-hover transition-colors">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33V22C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                    <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="text-gray-400 dark:text-footer-link hover:text-white dark:hover:text-footer-link-hover transition-colors">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.13l-6.66-8.892L2.83 22H.51l8.026-10.776L1.48 2.25H4.93l5.087 6.76L17.22 2.25h1.024zM17.487 20.2H19.2L7.368 3.75H5.5l12.007 16.45z" />
+                        </svg>
+                    </a>
+                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="text-gray-400 dark:text-footer-link hover:text-white dark:hover:text-footer-link-hover transition-colors">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-10 border-t border-gray-700 dark:border-gray-600 pt-8">
+            <p class="text-gray-500 dark:text-gray-400 text-sm">&copy; 2025 Wisdom Circle Group (WCG.in). All rights reserved.</p>
+            <p class="mt-2 text-gray-500 dark:text-gray-400 text-sm">Built with passion and collective wisdom.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when a link is clicked
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', function() {
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+
+        // Smooth scrolling for navigation links and active state
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                // Only prevent default and smooth scroll for internal links
+                const href = this.getAttribute('href');
+                if (href.startsWith('#')) {
+                    e.preventDefault(); // Prevent default only for internal links
+
+                    document.querySelectorAll('.nav-link').forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    if (this.classList.contains('nav-link')) {
+                        this.classList.add('active');
+                    }
+
+                    document.querySelector(href).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+                // External links (like blog.html) will behave as normal
+            });
+        });
+
+
+        // Intersection Observer for scroll animations
+        const sections = document.querySelectorAll('section');
+
+        const observerOptions = {
+            root: null, /* viewport */
+            rootMargin: '0px',
+            threshold: 0.2 /* 20% of the section must be visible */
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.remove('section-hidden');
+                    entry.target.classList.add('section-visible');
+                    // Optional: Unobserve after animation to prevent re-triggering
+                    // observer.unobserve(entry.target);
+                } else {
+                    // Optional: Reset animation when out of view
+                    entry.target.classList.remove('section-visible');
+                    entry.target.classList.add('section-hidden');
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            // The hero section is handled separately to be visible on load
+            if (section.id !== 'hero') {
+                section.classList.add('section-hidden'); // Initially hide all sections except hero
+            }
+            observer.observe(section);
+        });
+
+        // WCG AI Assistant Modal Functionality
+        const wcgAiModal = document.getElementById('wcg-ai-modal');
+        const openAiModalButton = document.getElementById('open-ai-modal-button');
+        const closeAiModalButton = document.getElementById('close-ai-modal-button');
+        const heroAiToggleButton = document.getElementById('hero-ai-toggle-button'); // Button in Hero section
+        const navAiAssistantLink = document.getElementById('nav-ai-assistant'); // Nav link
+        const mobileNavAiAssistantLink = document.getElementById('mobile-nav-ai-assistant'); // Mobile nav link
+
+        const aiInput = document.getElementById('ai-input');
+        const aiAskButton = document.getElementById('ai-ask-button');
+        const aiResponse = document.getElementById('ai-response');
+        const aiLoading = document.getElementById('ai-loading');
+
+        function openAiModal() {
+            wcgAiModal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+            aiInput.focus(); // Focus on the input field
+        }
+
+        function closeAiModal() {
+            wcgAiModal.classList.remove('active');
+            document.body.style.overflow = ''; // Restore scrolling
+            // Reset AI response when closing
+            aiInput.value = '';
+            aiResponse.innerHTML = 'Your AI response will appear here...';
+            aiLoading.classList.add('hidden');
+            aiResponse.classList.remove('animate-pulse-once');
+        }
+
+        openAiModalButton.addEventListener('click', openAiModal);
+        closeAiModalButton.addEventListener('click', closeAiModal);
+        heroAiToggleButton.addEventListener('click', (e) => {
+            e.preventDefault(); // Prevent default scroll to #ai-toggle
+            openAiModal();
+        });
+        navAiAssistantLink.addEventListener('click', (e) => {
+            e.preventDefault(); // Prevent default link behavior
+            openAiModal();
+        });
+        mobileNavAiAssistantLink.addEventListener('click', (e) => {
+            e.preventDefault(); // Prevent default link behavior
+            closeAiModal(); // Close mobile menu first
+            openAiModal();
+        });
+
+        // Close modal if clicking outside the content
+        wcgAiModal.addEventListener('click', (e) => {
+            if (e.target === wcgAiModal) {
+                closeAiModal();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && wcgAiModal.classList.contains('active')) {
+                closeAiModal();
+            }
+        });
+
+
+        aiAskButton.addEventListener('click', async () => {
+            const prompt = aiInput.value.trim();
+            if (!prompt) {
+                aiResponse.innerHTML = '<span class="text-red-500">Please enter a question!</span>';
+                return;
+            }
+
+            aiResponse.innerHTML = 'Your AI response will appear here...'; // Reset previous response
+            aiLoading.classList.remove('hidden'); // Show loading indicator
+            aiResponse.classList.add('animate-pulse-once'); // Add pulse animation
+
+            try {
+                let chatHistory = [];
+                chatHistory.push({ role: "user", parts: [{ text: prompt }] });
+                const payload = { contents: chatHistory };
+                const apiKey = ""; // Canvas will provide this at runtime
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await response.json();
+
+                if (result.candidates && result.candidates.length > 0 &&
+                    result.candidates[0].content && result.candidates[0].content.parts &&
+                    result.candidates[0].content.parts.length > 0) {
+                    const text = result.candidates[0].content.parts[0].text;
+                    aiResponse.innerHTML = text;
+                } else {
+                    aiResponse.innerHTML = '<span class="text-red-500">Sorry, I could not get a response. Please try again.</span>';
+                }
+            } catch (error) {
+                console.error('Error fetching AI response:', error);
+                aiResponse.innerHTML = '<span class="text-red-500">An error occurred while fetching the AI response. Please try again later.</span>';
+            } finally {
+                aiLoading.classList.add('hidden'); // Hide loading indicator
+                aiResponse.classList.remove('animate-pulse-once'); // Remove pulse animation
+            }
+        });
+
+        // Mission Section Toggle Functionality
+        const toggleMissionContentButton = document.getElementById('toggle-mission-content');
+        const missionContentArea = document.getElementById('mission-content-area');
+
+        toggleMissionContentButton.addEventListener('click', () => {
+            missionContentArea.classList.toggle('section-content-hidden');
+            missionContentArea.classList.toggle('section-content-visible');
+        });
+
+
+        // Mission Statement Generator Functionality
+        const toggleMissionGeneratorButton = document.getElementById('toggle-mission-generator');
+        const missionGeneratorArea = document.getElementById('mission-generator-area');
+        const missionInput = document.getElementById('mission-input');
+        const generateMissionButton = document.getElementById('generate-mission-button');
+        const missionResponse = document.getElementById('mission-response');
+        const missionLoading = document.getElementById('mission-loading');
+
+        toggleMissionGeneratorButton.addEventListener('click', () => {
+            missionGeneratorArea.classList.toggle('llm-feature-hidden');
+            missionGeneratorArea.classList.toggle('llm-feature-visible');
+            if (missionGeneratorArea.classList.contains('llm-feature-hidden')) {
+                missionInput.value = '';
+                missionResponse.innerHTML = 'Your generated mission statement will appear here...';
+                missionLoading.classList.add('hidden');
+                missionResponse.classList.remove('animate-pulse-once');
+            }
+        });
+
+        generateMissionButton.addEventListener('click', async () => {
+            const prompt = missionInput.value.trim();
+            if (!prompt) {
+                missionResponse.innerHTML = '<span class="text-red-500">Please enter some keywords or ideas!</span>';
+                return;
+            }
+
+            missionResponse.innerHTML = 'Your generated mission statement will appear here...';
+            missionLoading.classList.remove('hidden');
+            missionResponse.classList.add('animate-pulse-once');
+
+            try {
+                let chatHistory = [];
+                chatHistory.push({ role: "user", parts: [{ text: `Generate an inspiring and concise mission statement for a group or organization based on the following keywords/ideas: "${prompt}". Focus on themes of collaboration, growth, and positive impact.` }] });
+                const payload = { contents: chatHistory };
+                const apiKey = "";
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await response.json();
+
+                if (result.candidates && result.candidates.length > 0 &&
+                    result.candidates[0].content && result.candidates[0].content.parts &&
+                    result.candidates[0].content.parts.length > 0) {
+                    const text = result.candidates[0].content.parts[0].text;
+                    missionResponse.innerHTML = text;
+                } else {
+                    missionResponse.innerHTML = '<span class="text-red-500">Sorry, I could not generate a mission statement. Please try again.</span>';
+                }
+            } catch (error) {
+                console.error('Error fetching mission statement:', error);
+                missionResponse.innerHTML = '<span class="text-red-500">An error occurred while generating the mission statement. Please try again later.</span>';
+            } finally {
+                missionLoading.classList.add('hidden');
+                missionResponse.classList.remove('animate-pulse-once');
+            }
+        });
+
+
+        // Rating functionality
+        const ratingEmojis = document.querySelectorAll('.rating-emoji');
+        const selectedRatingInput = document.getElementById('selected-rating');
+        const submitFeedbackButton = document.getElementById('submit-feedback');
+        const feedbackMessage = document.getElementById('feedback-message');
+        const feedbackMessageBox = document.getElementById('feedback-message-box');
+        const analyzeFeedbackButton = document.getElementById('analyze-feedback-button');
+        const feedbackAnalysisArea = document.getElementById('feedback-analysis-area');
+        const feedbackAnalysisLoading = document.getElementById('feedback-analysis-loading');
+
+        // Rate Us Section Toggle Functionality
+        const toggleRateUsContentButton = document.getElementById('toggle-rate-us-content');
+        const rateUsContentArea = document.getElementById('rate-us-content-area');
+
+        toggleRateUsContentButton.addEventListener('click', () => {
+            rateUsContentArea.classList.toggle('section-content-hidden');
+            rateUsContentArea.classList.toggle('section-content-visible');
+            // Reset feedback form and analysis when toggling closed
+            if (rateUsContentArea.classList.contains('section-content-hidden')) {
+                feedbackMessage.value = '';
+                selectedRatingInput.value = "0";
+                ratingEmojis.forEach(btn => {
+                    btn.style.color = '#ccc'; // Reset emojis to gray
+                });
+                feedbackMessageBox.classList.add('hidden');
+                feedbackAnalysisArea.classList.add('llm-feature-hidden');
+                feedbackAnalysisArea.classList.remove('llm-feature-visible');
+                feedbackAnalysisArea.innerHTML = 'AI analysis will appear here...';
+                feedbackAnalysisLoading.classList.add('hidden');
+            }
+        });
+
+
+        // Define colors for each rating level
+        const emojiColors = [
+            '#FF6B6B', // Red for 1 (😡)
+            '#FFD166', // Orange for 2 (🙁)
+            '#FFEA00', // Yellow for 3 (😐)
+            '#6BFFB8', // Light Green for 4 (😊)
+            '#4CAF50'  // Dark Green for 5 (🤩)
+        ];
+
+        ratingEmojis.forEach((emojiButton, index) => {
+            emojiButton.addEventListener('click', () => {
+                const rating = parseInt(emojiButton.dataset.rating);
+                selectedRatingInput.value = rating;
+
+                // Apply colors based on selected rating
+                ratingEmojis.forEach((btn, i) => {
+                    if (i < rating) {
+                        btn.style.color = emojiColors[i]; // Apply specific color
+                    } else {
+                        btn.style.color = '#ccc'; // Gray out unselected emojis
+                    }
+                });
+            });
+
+            // Initial state: all emojis gray
+            emojiButton.style.color = '#ccc';
+        });
+
+        submitFeedbackButton.addEventListener('click', () => {
+            const message = feedbackMessage.value.trim();
+            const rating = selectedRatingInput.value;
+
+            if (rating === "0" && !message) {
+                feedbackMessageBox.classList.remove('hidden');
+                feedbackMessageBox.classList.add('bg-red-100', 'text-red-700');
+                feedbackMessageBox.classList.remove('bg-green-100', 'text-green-700');
+                feedbackMessageBox.innerHTML = 'Please select a rating or enter a message.';
+                return;
+            }
+
+            // In a real application, you would send this data to a server (e.g., Firestore)
+            console.log('Feedback submitted:', { message, rating });
+
+            feedbackMessageBox.classList.remove('hidden');
+            feedbackMessageBox.classList.remove('bg-red-100', 'text-red-700');
+            feedbackMessageBox.classList.add('bg-green-100', 'text-green-700');
+            feedbackMessageBox.innerHTML = 'Thank you for your feedback! We appreciate it.';
+
+            // Clear form after submission
+            feedbackMessage.value = '';
+            selectedRatingInput.value = "0";
+            ratingEmojis.forEach(btn => {
+                btn.style.color = '#ccc'; // Reset emojis to gray
+            });
+            // Hide analysis area if visible
+            feedbackAnalysisArea.classList.add('llm-feature-hidden');
+            feedbackAnalysisArea.classList.remove('llm-feature-visible');
+            feedbackAnalysisArea.innerHTML = 'AI analysis will appear here...';
+            feedbackAnalysisLoading.classList.add('hidden');
+        });
+
+        // Feedback Analysis Functionality
+        analyzeFeedbackButton.addEventListener('click', async () => {
+            const feedbackText = feedbackMessage.value.trim();
+            if (!feedbackText) {
+                feedbackAnalysisArea.classList.remove('llm-feature-hidden');
+                feedbackAnalysisArea.classList.add('llm-feature-visible');
+                feedbackAnalysisArea.innerHTML = '<span class="text-red-500">Please enter feedback to analyze!</span>';
+                return;
+            }
+
+            feedbackAnalysisArea.classList.remove('llm-feature-hidden');
+            feedbackAnalysisArea.classList.add('llm-feature-visible');
+            feedbackAnalysisArea.innerHTML = 'AI analysis will appear here...';
+            feedbackAnalysisLoading.classList.remove('hidden');
+            feedbackAnalysisArea.classList.add('animate-pulse-once');
+
+            try {
+                let chatHistory = [];
+                chatHistory.push({ role: "user", parts: [{ text: `Analyze the sentiment of the following user feedback (positive, negative, or neutral) and suggest one specific actionable improvement based on the feedback. Format your response clearly with "Sentiment: [sentiment]" and "Suggestion: [suggestion]". Feedback: "${feedbackText}"` }] });
+                const payload = { contents: chatHistory };
+                const apiKey = "";
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await response.json();
+
+                if (result.candidates && result.candidates.length > 0 &&
+                    result.candidates[0].content && result.candidates[0].content.parts &&
+                    result.candidates[0].content.parts.length > 0) {
+                    const text = result.candidates[0].content.parts[0].text;
+                    feedbackAnalysisArea.innerHTML = text.replace(/\n/g, '<br>'); // Preserve newlines
+                } else {
+                    feedbackAnalysisArea.innerHTML = '<span class="text-red-500">Sorry, I could not analyze the feedback. Please try again.</span>';
+                }
+            } catch (error) {
+                console.error('Error fetching feedback analysis:', error);
+                feedbackAnalysisArea.innerHTML = '<span class="text-red-500">An error occurred during feedback analysis. Please try again later.</span>';
+            } finally {
+                feedbackAnalysisLoading.classList.add('hidden');
+                feedbackAnalysisArea.classList.remove('animate-pulse-once');
+            }
+        });
+
+
+        // Dark Mode Functionality
+        const themeToggle = document.getElementById('theme-toggle');
+        const sunIcon = document.getElementById('sun-icon');
+        const moonIcon = document.getElementById('moon-icon');
+
+        // Function to apply theme
+        function applyTheme(theme) {
+            if (theme === 'dark') {
+                document.documentElement.classList.add('dark');
+                moonIcon.classList.remove('hidden');
+                sunIcon.classList.add('hidden');
+            } else {
+                document.documentElement.classList.remove('dark');
+                sunIcon.classList.remove('hidden');
+                moonIcon.classList.add('hidden');
+            }
+        }
+
+        // Check for saved theme preference on load
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme) {
+            applyTheme(currentTheme);
+        } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            // Default to system preference if no saved theme
+            applyTheme('dark');
+        } else {
+            applyTheme('light'); // Default to light if no preference
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const newTheme = document.documentElement.classList.contains('dark') ? 'light' : 'dark';
+            applyTheme(newTheme);
+            localStorage.setItem('theme', newTheme);
+        });
+
+        // Initial check for hero section visibility on load
+        document.addEventListener('DOMContentLoaded', () => {
+            const heroSection = document.getElementById('hero');
+            if (heroSection) {
+                heroSection.classList.add('section-visible'); // Make hero visible immediately
+                heroSection.classList.remove('section-hidden');
+            }
+        });
+    </script>
+</body>
+</html>
