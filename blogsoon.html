@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WCG Blog</title>
+    <title>WCG.in Blog - Coming Soon</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts - Inter -->
@@ -134,6 +134,25 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #555;
         }
+
+        /* Animation for coming soon elements */
+        @keyframes fadeInScale {
+            0% { opacity: 0; transform: scale(0.9); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        .animate-fadeInScale {
+            animation: fadeInScale 1s ease-out forwards;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .animate-bounce-subtle {
+            animation: bounce 2s infinite ease-in-out;
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
@@ -146,8 +165,9 @@
                 <a href="index.html#hero" class="nav-link nav-link-gradient font-medium text-lg text-gray-700 dark:text-gray-200">Home</a>
                 <a href="index.html#ai-tools" class="nav-link nav-link-gradient font-medium text-lg text-gray-700 dark:text-gray-200">AI Tools</a>
                 <a href="index.html#mission" class="nav-link nav-link-gradient font-medium text-lg text-gray-700 dark:text-gray-200">Mission</a>
+                <a href="index.html#team" class="nav-link nav-link-gradient font-medium text-lg text-gray-700 dark:text-gray-200">Team</a>
                 <a href="index.html#rate-us" class="nav-link nav-link-gradient font-medium text-lg text-gray-700 dark:text-gray-200">Rate Us</a>
-                <a href="blog.html" class="nav-link nav-link-gradient font-medium text-lg text-gray-700 dark:text-gray-200">Blog</a>
+                <a href="blog-coming-soon.html" class="nav-link nav-link-gradient font-medium text-lg text-gray-700 dark:text-gray-200">Blog</a>
                 <a href="ebook.html" class="nav-link nav-link-gradient font-medium text-lg text-gray-700 dark:text-gray-200">Ebooks</a>
                 <!-- Dark Mode Toggle Button -->
                 <button id="theme-toggle" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors">
@@ -169,157 +189,40 @@
             <a href="index.html#hero" class="block text-gray-700 dark:text-gray-200 hover:bg-indigo-50 dark:hover:bg-gray-700 hover:text-indigo-600 dark:hover:text-indigo-400 px-3 py-2 rounded-md text-base font-medium transition-colors">Home</a>
             <a href="index.html#ai-tools" class="block text-gray-700 dark:text-gray-200 hover:bg-indigo-50 dark:hover:bg-gray-700 hover:text-indigo-600 dark:hover:text-indigo-400 px-3 py-2 rounded-md text-base font-medium transition-colors">AI Tools</a>
             <a href="index.html#mission" class="block text-gray-700 dark:text-gray-200 hover:bg-indigo-50 dark:hover:bg-gray-700 hover:text-indigo-600 dark:hover:text-indigo-400 px-3 py-2 rounded-md text-base font-medium transition-colors">Mission</a>
+            <a href="index.html#team" class="block text-gray-700 dark:text-gray-200 hover:bg-indigo-50 dark:hover:bg-gray-700 hover:text-indigo-600 dark:hover:text-indigo-400 px-3 py-2 rounded-md text-base font-medium transition-colors">Team</a>
             <a href="index.html#rate-us" class="block text-gray-700 dark:text-gray-200 hover:bg-indigo-50 dark:hover:bg-gray-700 hover:text-indigo-600 dark:hover:text-indigo-400 px-3 py-2 rounded-md text-base font-medium transition-colors">Rate Us</a>
-            <a href="blog.html" class="block text-gray-700 dark:text-gray-200 hover:bg-indigo-50 dark:hover:bg-gray-700 hover:text-indigo-600 dark:hover:text-indigo-400 px-3 py-2 rounded-md text-base font-medium transition-colors">Blog</a>
+            <a href="blog-coming-soon.html" class="block text-gray-700 dark:text-gray-200 hover:bg-indigo-50 dark:hover:bg-gray-700 hover:text-indigo-600 dark:hover:text-indigo-400 px-3 py-2 rounded-md text-base font-medium transition-colors">Blog</a>
             <a href="ebook.html" class="block text-gray-700 dark:text-gray-200 hover:bg-indigo-50 dark:hover:bg-gray-700 hover:text-indigo-600 dark:hover:text-indigo-400 px-3 py-2 rounded-md text-base font-medium transition-colors">Ebooks</a>
         </div>
     </nav>
 
-    <!-- Blog Posts Section -->
-    <section id="blog-posts" class="py-20 px-4 bg-gray-50 dark:bg-bg-color min-h-screen">
-        <div class="container mx-auto text-center mt-16">
-            <h1 class="text-5xl md:text-6xl font-extrabold text-indigo-700 dark:text-indigo-400 mb-12">Our Latest Blog Posts</h1>
-            <p class="text-xl text-gray-600 dark:text-section-text-light mb-8 max-w-3xl mx-auto">
-                Dive into our articles, insights, and discussions on technology, innovation, and community building. All content is free to read and share.
-            </p>
+    <!-- Blog Coming Soon Section -->
+    <section id="blog-coming-soon" class="py-20 px-4 bg-gray-50 dark:bg-bg-color min-h-screen flex items-center justify-center text-center">
+        <div class="container mx-auto mt-16 max-w-3xl">
+            <div class="bg-white dark:bg-section-bg-light p-8 md:p-12 rounded-3xl shadow-xl border border-gray-200 dark:border-section-border-light animate-fadeInScale">
+                <h1 class="text-5xl md:text-6xl font-extrabold text-indigo-700 dark:text-indigo-400 mb-6 animate-bounce-subtle">
+                    Blog Coming Soon!
+                </h1>
+                <p class="text-xl text-gray-600 dark:text-section-text-light mb-8 leading-relaxed">
+                    We're working hard to bring you insightful articles, exciting updates, and engaging content.
+                    Get ready to dive deep into discussions on technology, innovation, and community building.
+                </p>
+                <p class="text-lg text-gray-700 dark:text-section-text-light mb-10">
+                    Stay tuned! We'll notify you as soon as our blog goes live.
+                </p>
 
-            <!-- Search and Sort Controls -->
-            <div class="flex flex-col sm:flex-row justify-center items-center gap-4 mb-10">
-                <input type="text" id="blog-search-input" placeholder="Search blog posts..." class="p-3 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200 focus:ring-2 focus:ring-indigo-500 focus:border-transparent w-full sm:w-1/2 lg:w-1/3">
-                <select id="blog-sort-select" class="p-3 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200 focus:ring-2 focus:ring-indigo-500 focus:border-transparent w-full sm:w-auto">
-                    <option value="newest">Sort by: Newest</option>
-                    <option value="oldest">Sort by: Oldest</option>
-                    <option value="alphabetical">Sort by: Alphabetical (A-Z)</option>
-                </select>
-            </div>
-
-            <div id="blog-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
-                <!-- Blog Post Card 1 -->
-                <div class="blog-post-card bg-card dark:bg-card-bg p-6 rounded-2xl shadow-lg border border-card dark:border-card-border transform hover:scale-105 transition-transform duration-300 flex flex-col items-center"
-                     data-title="The Rise of Quantum Computing"
-                     data-description="Exploring the potential and challenges of quantum technology in the modern era."
-                     data-date="2024-07-15">
-                    <img src="https://placehold.co/200x150/A78BFA/ffffff?text=Blog+Post+1" alt="Blog Post Cover 1" class="w-full h-auto rounded-lg mb-6 shadow-md object-cover">
-                    <h3 class="text-2xl font-bold text-indigo-800 dark:text-indigo-300 mb-2">The Rise of Quantum Computing</h3>
-                    <p class="text-indigo-600 dark:text-indigo-200 font-medium mb-3">By B.Krishna</p>
-                    <p class="text-gray-600 dark:text-card-text mb-4 text-center flex-grow">
-                        Exploring the potential and challenges of quantum technology in the modern era.
-                    </p>
-                    <button class="read-now-btn bg-button text-button font-bold py-3 px-8 rounded-full hover:bg-button-hover transition-colors duration-300 shadow-md transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-indigo-500 focus:ring-opacity-50" data-external-url="https://wisdomcircleweb20.blogspot.com/2025/07/the-rise-of-quantum-computing.html">
-                        Read Now
-                    </button>
-                </div>
-
-                <!-- Blog Post Card 2 -->
-                <div class="blog-post-card bg-card dark:bg-card-bg p-6 rounded-2xl shadow-lg border border-card dark:border-card-border transform hover:scale-105 transition-transform duration-300 flex flex-col items-center"
-                     data-title="Community Building in the Digital Age"
-                     data-description="Strategies for fostering strong online communities and meaningful connections."
-                     data-date="2024-07-10">
-                    <img src="https://placehold.co/200x150/6BFFB8/374151?text=Blog+Post+2" alt="Blog Post Cover 2" class="w-full h-auto rounded-lg mb-6 shadow-md object-cover">
-                    <h3 class="text-2xl font-bold text-indigo-800 dark:text-indigo-300 mb-2">Community Building in the Digital Age</h3>
-                    <p class="text-indigo-600 dark:text-indigo-200 font-medium mb-3">By B.Krishna</p>
-                    <p class="text-gray-600 dark:text-card-text mb-4 text-center flex-grow">
-                        Strategies for fostering strong online communities and meaningful connections.
-                    </p>
-                    <button class="read-now-btn bg-button text-button font-bold py-3 px-8 rounded-full hover:bg-button-hover transition-colors duration-300 shadow-md transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-indigo-500 focus:ring-opacity-50" data-external-url="https://wisdomcircleweb20.blogspot.com/2025/07/community-building-in-digital-age-b.html">
-                        Read Now
-                    </button>
-                </div>
-
-                <!-- Blog Post Card 3 -->
-                <div class="blog-post-card bg-card dark:bg-card-bg p-6 rounded-2xl shadow-lg border border-card dark:border-card-border transform hover:scale-105 transition-transform duration-300 flex flex-col items-center"
-                     data-title="Sustainable Tech: A Green Future"
-                     data-description="How technology can contribute to environmental sustainability."
-                     data-date="2024-07-05">
-                    <img src="https://placehold.co/200x150/FFD166/374151?text=Blog+Post+3" alt="Blog Post Cover 3" class="w-full h-auto rounded-lg mb-6 shadow-md object-cover">
-                    <h3 class="text-2xl font-bold text-indigo-800 dark:text-indigo-300 mb-2">Sustainable Tech: A Green Future</h3>
-                    <p class="text-indigo-600 dark:text-indigo-200 font-medium mb-3">By B.Krishna</p>
-                    <p class="text-gray-600 dark:text-card-text mb-4 text-center flex-grow">
-                        How technology can contribute to environmental sustainability.
-                    </p>
-                    <button class="read-now-btn bg-button text-button font-bold py-3 px-8 rounded-full hover:bg-button-hover transition-colors duration-300 shadow-md transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-indigo-500 focus:ring-opacity-50" data-external-url="https://example.com/sustainable-tech">
-                        Read Now
-                    </button>
-                </div>
-
-                <!-- Blog Post Card 4 -->
-                <div class="blog-post-card bg-card dark:bg-card-bg p-6 rounded-2xl shadow-lg border border-card dark:border-card-border transform hover:scale-105 transition-transform duration-300 flex flex-col items-center"
-                     data-title="The Psychology of Learning Online"
-                     data-description="Understanding how to optimize online learning experiences for better retention."
-                     data-date="2024-06-28">
-                    <img src="https://placehold.co/200x150/6B84FF/ffffff?text=Blog+Post+4" alt="Blog Post Cover 4" class="w-full h-auto rounded-lg mb-6 shadow-md object-cover">
-                    <h3 class="text-2xl font-bold text-indigo-800 dark:text-indigo-300 mb-2">The Psychology of Learning Online</h3>
-                    <p class="text-indigo-600 dark:text-indigo-200 font-medium mb-3">By B.Krishna</p>
-                    <p class="text-gray-600 dark:text-card-text mb-4 text-center flex-grow">
-                        Understanding how to optimize online learning experiences for better retention.
-                    </p>
-                    <button class="read-now-btn bg-button text-button font-bold py-3 px-8 rounded-full hover:bg-button-hover transition-colors duration-300 shadow-md transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-indigo-500 focus:ring-opacity-50" data-external-url="https://example.com/online-learning">
-                        Read Now
-                    </button>
-                </div>
-
-                <!-- Blog Post Card 5 -->
-                <div class="blog-post-card bg-card dark:bg-card-bg p-6 rounded-2xl shadow-lg border border-card dark:border-card-border transform hover:scale-105 transition-transform duration-300 flex flex-col items-center"
-                     data-title="AI in Everyday Life"
-                     data-description="How artificial intelligence is subtly integrated into our daily routines."
-                     data-date="2024-06-20">
-                    <img src="https://placehold.co/200x150/FF6B6B/ffffff?text=Blog+Post+5" alt="Blog Post Cover 5" class="w-full h-auto rounded-lg mb-6 shadow-md object-cover">
-                    <h3 class="text-2xl font-bold text-indigo-800 dark:text-indigo-300 mb-2">AI in Everyday Life</h3>
-                    <p class="text-indigo-600 dark:text-indigo-200 font-medium mb-3">By B.Krishna</p>
-                    <p class="text-gray-600 dark:text-card-text mb-4 text-center flex-grow">
-                        How artificial intelligence is subtly integrated into our daily routines.
-                    </p>
-                    <button class="read-now-btn bg-button text-button font-bold py-3 px-8 rounded-full hover:bg-button-hover transition-colors duration-300 shadow-md transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-indigo-500 focus:ring-opacity-50" data-external-url="https://example.com/ai-everyday-life">
-                        Read Now
-                    </button>
-                </div>
-
-                <!-- Blog Post Card 6 -->
-                <div class="blog-post-card bg-card dark:bg-card-bg p-6 rounded-2xl shadow-lg border border-card dark:border-card-border transform hover:scale-105 transition-transform duration-300 flex flex-col items-center"
-                     data-title="The Future of Remote Work"
-                     data-description="Insights into evolving remote work trends and best practices for productivity."
-                     data-date="2024-06-12">
-                    <img src="https://placehold.co/200x150/D1C4E9/374151?text=Blog+Post+6" alt="Blog Post Cover 6" class="w-full h-auto rounded-lg mb-6 shadow-md object-cover">
-                    <h3 class="text-2xl font-bold text-indigo-800 dark:text-indigo-300 mb-2">The Future of Remote Work</h3>
-                    <p class="text-indigo-600 dark:text-indigo-200 font-medium mb-3">By B.Krishna</p>
-                    <p class="text-gray-600 dark:text-card-text mb-4 text-center flex-grow">
-                        Insights into evolving remote work trends and best practices for productivity.
-                    </p>
-                    <button class="read-now-btn bg-button text-button font-bold py-3 px-8 rounded-full hover:bg-button-hover transition-colors duration-300 shadow-md transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-indigo-500 focus:ring-opacity-50" data-external-url="https://example.com/remote-work-future">
-                        Read Now
-                    </button>
-                </div>
-
-                <!-- Blog Post Card 7 -->
-                <div class="blog-post-card bg-card dark:bg-card-bg p-6 rounded-2xl shadow-lg border border-card dark:border-card-border transform hover:scale-105 transition-transform duration-300 flex flex-col items-center"
-                     data-title="Cybersecurity Tips for Everyone"
-                     data-description="Essential advice to protect your digital life from common threats."
-                     data-date="2024-06-01">
-                    <img src="https://placehold.co/200x150/B3E5FC/374151?text=Blog+Post+7" alt="Blog Post Cover 7" class="w-full h-auto rounded-lg mb-6 shadow-md object-cover">
-                    <h3 class="text-2xl font-bold text-indigo-800 dark:text-indigo-300 mb-2">Cybersecurity Tips for Everyone</h3>
-                    <p class="text-indigo-600 dark:text-indigo-200 font-medium mb-3">By B.Krishna</p>
-                    <p class="text-gray-600 dark:text-card-text mb-4 text-center flex-grow">
-                        Essential advice to protect your digital life from common threats.
-                    </p>
-                    <button class="read-now-btn bg-button text-button font-bold py-3 px-8 rounded-full hover:bg-button-hover transition-colors duration-300 shadow-md transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-indigo-500 focus:ring-opacity-50" data-external-url="https://example.com/cybersecurity-tips">
-                        Read Now
-                    </button>
-                </div>
-
-                <!-- Blog Post Card 8 -->
-                <div class="blog-post-card bg-card dark:bg-card-bg p-6 rounded-2xl shadow-lg border border-card dark:border-card-border transform hover:scale-105 transition-transform duration-300 flex flex-col items-center"
-                     data-title="Blockchain Beyond Cryptocurrencies"
-                     data-description="Exploring the diverse applications of blockchain technology in various industries."
-                     data-date="2024-05-25">
-                    <img src="https://placehold.co/200x150/C8E6C9/374151?text=Blog+Post+8" alt="Blog Post Cover 8" class="w-full h-auto rounded-lg mb-6 shadow-md object-cover">
-                    <h3 class="text-2xl font-bold text-indigo-800 dark:text-indigo-300 mb-2">Blockchain Beyond Cryptocurrencies</h3>
-                    <p class="text-indigo-600 dark:text-indigo-200 font-medium mb-3">By B.Krishna</p>
-                    <p class="text-gray-600 dark:text-card-text mb-4 text-center flex-grow">
-                        Exploring the diverse applications of blockchain technology in various industries.
-                    </p>
-                    <button class="read-now-btn bg-button text-button font-bold py-3 px-8 rounded-full hover:bg-button-hover transition-colors duration-300 shadow-md transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-indigo-500 focus:ring-opacity-50" data-external-url="https://example.com/blockchain-beyond">
-                        Read Now
-                    </button>
+                <!-- Newsletter Signup Form -->
+                <div class="max-w-md mx-auto">
+                    <h3 class="text-2xl font-bold text-indigo-800 dark:text-indigo-300 mb-4">Get Notified!</h3>
+                    <form class="flex flex-col sm:flex-row gap-4">
+                        <input type="email" placeholder="Enter your email address" class="flex-grow p-3 rounded-xl border border-gray-300 dark:border-ai-input-border bg-white dark:bg-ai-input-bg text-gray-800 dark:text-ai-input-text focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all placeholder-gray-500 dark:placeholder-gray-400">
+                        <button type="submit" class="bg-button text-button font-bold py-3 px-8 rounded-xl hover:bg-button-hover transition-colors duration-300 shadow-md transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-indigo-500 focus:ring-opacity-50">
+                            Notify Me
+                        </button>
+                    </form>
+                    <div id="notification-message" class="hidden mt-4 p-3 rounded-lg text-sm font-medium text-green-700 bg-green-100 dark:text-green-200 dark:bg-green-800">
+                        <!-- Notification message will appear here -->
+                    </div>
                 </div>
             </div>
         </div>
@@ -366,7 +269,7 @@
                     <li><a href="privacy.html" class="text-gray-400 dark:text-footer-link hover:text-white dark:hover:text-footer-link-hover transition-colors text-sm">Privacy Policy</a></li>
                     <li><a href="terms.html" class="text-gray-400 dark:text-footer-link hover:text-white dark:hover:text-footer-link-hover transition-colors text-sm">Terms of Service</a></li>
                     <li><a href="#" class="text-gray-400 dark:text-footer-link hover:text-white dark:hover:text-footer-link-hover transition-colors text-sm">Support</a></li>
-                    <li><a href="blog.html" class="text-gray-400 dark:text-footer-link hover:text-white dark:hover:text-footer-link-hover transition-colors text-sm">Our Blog</a></li>
+                    <li><a href="blog-coming-soon.html" class="text-gray-400 dark:text-footer-link hover:text-white dark:hover:text-footer-link-hover transition-colors text-sm">Our Blog</a></li>
                 </ul>
             </div>
 
@@ -448,62 +351,41 @@
             localStorage.setItem('theme', newTheme);
         });
 
-        // Blog Post "Read Now" Functionality
-        document.querySelectorAll('.read-now-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                const externalUrl = this.dataset.externalUrl;
-                if (externalUrl) {
-                    window.open(externalUrl, '_blank'); // Open URL in a new tab
-                } else {
-                    console.error('No external URL defined for this blog post.');
-                }
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when a link is clicked
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', function() {
+                document.getElementById('mobile-menu').classList.add('hidden');
             });
         });
 
-        // Blog Search and Sort Functionality
-        const blogSearchInput = document.getElementById('blog-search-input');
-        const blogSortSelect = document.getElementById('blog-sort-select');
-        const blogListContainer = document.getElementById('blog-list');
-        const blogPostCards = Array.from(document.querySelectorAll('.blog-post-card')); // Convert NodeList to Array
+        // Newsletter signup (basic client-side simulation)
+        const newsletterForm = document.querySelector('#blog-coming-soon form');
+        const notificationMessage = document.getElementById('notification-message');
 
-        function renderBlogPosts() {
-            let filteredPosts = blogPostCards;
+        newsletterForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const emailInput = this.querySelector('input[type="email"]');
+            const email = emailInput.value.trim();
 
-            // 1. Filter based on search query
-            const searchQuery = blogSearchInput.value.toLowerCase().trim();
-            if (searchQuery) {
-                filteredPosts = filteredPosts.filter(card => {
-                    const title = card.dataset.title.toLowerCase();
-                    const description = card.dataset.description.toLowerCase();
-                    return title.includes(searchQuery) || description.includes(searchQuery);
-                });
-            }
-
-            // 2. Sort based on selected option
-            const sortOption = blogSortSelect.value;
-            if (sortOption === 'newest') {
-                filteredPosts.sort((a, b) => new Date(b.dataset.date) - new Date(a.dataset.date));
-            } else if (sortOption === 'oldest') {
-                filteredPosts.sort((a, b) => new Date(a.dataset.date) - new Date(b.dataset.date));
-            } else if (sortOption === 'alphabetical') {
-                filteredPosts.sort((a, b) => a.dataset.title.localeCompare(b.dataset.title));
-            }
-
-            // 3. Clear existing posts and append sorted/filtered ones
-            blogListContainer.innerHTML = ''; // Clear current display
-            if (filteredPosts.length > 0) {
-                filteredPosts.forEach(card => blogListContainer.appendChild(card));
+            if (email && email.includes('@') && email.includes('.')) {
+                notificationMessage.textContent = `Thanks for your interest! We'll notify ${email} when the blog is live.`;
+                notificationMessage.classList.remove('hidden');
+                notificationMessage.classList.remove('bg-red-100', 'text-red-700');
+                notificationMessage.classList.add('bg-green-100', 'text-green-700');
+                emailInput.value = ''; // Clear the input
             } else {
-                blogListContainer.innerHTML = '<p class="text-xl text-gray-500 dark:text-gray-400 col-span-full">No blog posts found matching your criteria.</p>';
+                notificationMessage.textContent = 'Please enter a valid email address.';
+                notificationMessage.classList.remove('hidden');
+                notificationMessage.classList.remove('bg-green-100', 'text-green-700');
+                notificationMessage.classList.add('bg-red-100', 'text-red-700');
             }
-        }
-
-        // Event Listeners for search and sort
-        blogSearchInput.addEventListener('input', renderBlogPosts);
-        blogSortSelect.addEventListener('change', renderBlogPosts);
-
-        // Initial render on page load
-        document.addEventListener('DOMContentLoaded', renderBlogPosts);
+        });
     </script>
 </body>
 </html>
