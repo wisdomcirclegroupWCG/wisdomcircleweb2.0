@@ -1,594 +1,525 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WCG Ebook Store</title>
-    <!-- Tailwind CSS CDN -->
+    <title>E-book Store - Wisdom Circle Group (WCG)</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts - Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome for social icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        /* Custom CSS for consistency with homepage theme */
+        /* Custom styles from homepage */
         body {
             font-family: 'Inter', sans-serif;
-            overflow-x: hidden; /* Prevent horizontal scroll due to animations */
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+            background-color: #f8fafc; /* slate-50 */
         }
 
-        /* CSS Variables for Light and Dark Mode (copied from homepage for consistency) */
-        :root {
-            --bg-color: #f9fafb; /* Light mode background (gray-50) */
-            --text-color: #1f2937; /* Darker text for better contrast in light mode (gray-900) */
-            --nav-bg: #ffffff;
-            --nav-text: #1f2937; /* Darker nav text for better contrast in light mode (gray-900) */
-            --section-bg-light: #ffffff;
-            --section-text-light: #374151; /* Darker section text for better contrast in light mode (gray-800) */
-            --ai-input-bg: #f3f4f6; /* gray-100 */
-            --ai-input-border: #d1d5db; /* gray-300 */
-            --ai-input-text: #1f2937; /* Darker input text for better contrast in light mode (gray-900) */
-            --footer-bg: #1f2937; /* gray-800 */
-            --footer-text: #d1d5db; /* gray-400 */
-            --footer-heading: #818cf8; /* indigo-400 */
-            --footer-link: #9ca3af; /* gray-400 */
-            --footer-link-hover: #ffffff;
-            --footer-input-bg: #374151; /* gray-700 */
-            --footer-input-border: #4b5563; /* gray-600 */
-            --footer-input-placeholder: #9ca3af; /* gray-400 */
-            --footer-icon: #a5b4fc; /* indigo-300 */
-            --card-bg: #ffffff;
-            --card-border: #e5e7eb;
-            --card-text: #374151; /* Darker card text for better contrast in light mode (gray-800) */
-            --button-bg: #4f46e5; /* indigo-600 */
-            --button-hover-bg: #4338ca; /* indigo-700 */
-            --button-text: #ffffff;
-        }
-
-        .dark {
-            --bg-color: #1a202c; /* Dark mode background */
-            --text-color: #e2e8f0; /* Lighter text for better contrast in dark mode (gray-200) */
-            --nav-bg: #2d3748;
-            --nav-text: #f3f4f6; /* Lighter nav text for better contrast in dark mode (gray-100) */
-            --section-bg-light: #2d3748;
-            --section-text-light: #e2e8f0; /* Lighter section text for better contrast in dark mode (gray-200) */
-            --section-border-light: #4a5568;
-            --ai-input-bg: #1a202c;
-            --ai-input-border: #4a5568;
-            --ai-input-text: #f3f4f6; /* Lighter input text for better contrast in dark mode (gray-100) */
-            --footer-bg: #1a202c;
-            --footer-text: #a0aec0;
-            --footer-heading: #63b3ed;
-            --footer-link: #a0aec0;
-            --footer-link-hover: #e2e8f0;
-            --footer-input-bg: #2d3748;
-            --footer-input-border: #4a5568;
-            --footer-input-placeholder: #a0aec0;
-            --footer-icon: #63b3ed;
-            --card-bg: #2d3748;
-            --card-border: #4a5568;
-            --card-text: #e2e8f0; /* Lighter card text for better contrast in dark mode (gray-200) */
-            --button-bg: #4299e1; /* blue-500 */
-            --button-hover-bg: #3182ce; /* blue-600 */
-            --button-text: #ffffff;
-        }
-
-        /* Apply variables to Tailwind classes for consistency */
-        .bg-gray-50 { background-color: var(--bg-color); }
-        .text-gray-800 { color: var(--text-color); }
-        .bg-white { background-color: var(--nav-bg); }
-        .text-gray-700 { color: var(--nav-text); }
-        .border-gray-200 { border-color: var(--section-border-light); }
-        .border-gray-300 { border-color: var(--ai-input-border); }
-        .bg-gray-800 { background-color: var(--footer-bg); }
-        .text-gray-400 { color: var(--footer-text); }
-        .text-indigo-400 { color: var(--footer-heading); }
-        .hover\:text-white:hover { color: var(--footer-link-hover); }
-        .bg-gray-700 { background-color: var(--footer-input-bg); }
-        .border-gray-600 { border-color: var(--footer-input-border); }
-        .placeholder-gray-400::placeholder { color: var(--footer-input-placeholder); }
-        .text-indigo-300 { color: var(--footer-icon); }
-        .bg-card { background-color: var(--card-bg); }
-        .border-card { border-color: var(--card-border); }
-        .text-card { color: var(--card-text); }
-        .bg-button { background-color: var(--button-bg); }
-        .hover\:bg-button-hover:hover { background-color: var(--button-hover-bg); }
-        .text-button { color: var(--button-text); }
-        .text-ai-input-text { color: var(--ai-input-text); }
-        .bg-ai-input-bg { background-color: var(--ai-input-bg); }
-        .text-section-text-light { color: var(--section-text-light); }
-
-
-        /* Navigation gradient effect on hover */
-        .nav-link-gradient {
-            transition: color 0.3s ease-in-out;
-            background-image: linear-gradient(to right, #34D399, #EF4444);
-            background-size: 0% 100%;
-            background-repeat: no-repeat;
-            transition: background-size 0.3s ease-in-out;
-        }
-
-        .nav-link-gradient:hover {
-            background-size: 100% 100%;
+        .text-gradient {
+            background: linear-gradient(90deg, #4f46e5 0%, #a855f7 50%, #ec4899 100%);
             -webkit-background-clip: text;
+            -moz-background-clip: text;
             background-clip: text;
             color: transparent;
         }
-
-        /* Custom scrollbar for better aesthetics */
-        ::-webkit-scrollbar {
-            width: 8px;
+        
+        #navbar .desktop-link {
+            position: relative;
+            padding-bottom: 8px;
+        }
+        #navbar .desktop-link::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(90deg, #4f46e5, #a855f7, #ec4899);
+            transform: scaleX(0);
+            transform-origin: bottom right;
+            transition: transform 0.4s cubic-bezier(0.86, 0, 0.07, 1);
+        }
+        #navbar .desktop-link:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
         }
 
-        ::-webkit-scrollbar-track {
-            background: var(--bg-color);
-            border-radius: 10px;
+        .popup-overlay {
+            transition: opacity 0.3s ease-in-out;
+        }
+        
+        /* E-book card styles */
+        .ebook-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+        }
+        .ebook-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
         }
 
-        ::-webkit-scrollbar-thumb {
-            background: #888;
-            border-radius: 10px;
+        /* Genre Filter Button Styles */
+        .genre-btn {
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-weight: 500;
+            transition: background-color 0.3s, color 0.3s;
+            background-color: #e5e7eb; /* gray-200 */
+            color: #374151; /* gray-700 */
+            border: 2px solid transparent;
         }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #555;
+        .genre-btn.active {
+            background-color: #4f46e5; /* indigo-600 */
+            color: white;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+        .genre-btn:hover:not(.active) {
+             background-color: #d1d5db; /* gray-300 */
         }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body class="text-slate-800">
 
     <!-- Navigation Bar -->
-    <nav class="bg-white shadow-md fixed w-full z-50 py-4 px-6 md:px-10">
-        <div class="container mx-auto flex justify-between items-center">
-            <a href="index.html" class="text-2xl font-bold text-indigo-600 rounded-md p-2 hover:bg-indigo-50 transition-colors">WCG.in</a>
-            <div class="hidden md:flex space-x-8 items-center">
-                <a href="index.html#hero" class="nav-link nav-link-gradient font-medium text-lg text-gray-700 dark:text-gray-200">Home</a>
-                <a href="index.html#ai-tools" class="nav-link nav-link-gradient font-medium text-lg text-gray-700 dark:text-gray-200">AI Tools</a>
-                <a href="index.html#mission" class="nav-link nav-link-gradient font-medium text-lg text-gray-700 dark:text-gray-200">Mission</a>
-                <a href="index.html#team" class="nav-link nav-link-gradient font-medium text-lg text-gray-700 dark:text-gray-200">Team</a>
-                <a href="index.html#rate-us" class="nav-link nav-link-gradient font-medium text-lg text-gray-700 dark:text-gray-200">Rate Us</a>
-                <a href="blog.html" class="nav-link nav-link-gradient font-medium text-lg text-gray-700 dark:text-gray-200">Blog</a>
-                <a href="ebook.html" class="nav-link nav-link-gradient font-medium text-lg text-gray-700 dark:text-gray-200">Ebooks</a>
-                <!-- Dark Mode Toggle Button -->
-                <button id="theme-toggle" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors">
-                    <svg id="sun-icon" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-5 6a1 1 0 110-2h1a1 1 0 110 2h-1zm-4.243-2.121a1 1 0 010 1.414L9.343 17a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM3 11a1 1 0 100-2H2a1 1 0 100 2h1zm9-8.707V3a1 1 0 01-1-1h-1a1 1 0 01-1 1v.293a1 1 0 01.293.707 1 1 0 01-.293.707H12a1 1 0 011-1V3.293z" />
-                    </svg>
-                    <svg id="moon-icon" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-5 6a1 110-2h1a1 1 0 110 2h-1zm-4.243-2.121a1 1 0 010 1.414L9.343 17a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM3 11a1 1 0 100-2H2a1 1 0 100 2h1z" clip-rule="evenodd" />
-                    </svg>
-                </button>
+    <nav id="navbar" class="bg-white/85 backdrop-blur-md shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-3">
+            <div class="flex items-center justify-between">
+                <div class="text-2xl font-bold text-slate-800">
+                    <a href="index.html">WCG</a>
+                </div>
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html#home" class="desktop-link text-slate-600 hover:text-indigo-600 transition-colors font-medium">Home</a>
+                    <a href="index.html#mission" class="desktop-link text-slate-600 hover:text-indigo-600 transition-colors font-medium">Our Mission</a>
+                    <a href="index.html#team" class="desktop-link text-slate-600 hover:text-indigo-600 transition-colors font-medium">Our Team</a>
+                    <a href="index.html#rate-us" class="desktop-link text-slate-600 hover:text-indigo-600 transition-colors font-medium">Rate Us</a>
+                </div>
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="text-slate-800 focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                    </button>
+                </div>
             </div>
-            <!-- Mobile Menu Button -->
-            <button id="mobile-menu-button" class="md:hidden text-gray-700 dark:text-gray-200 hover:text-indigo-600 dark:hover:text-indigo-400 focus:outline-none">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-            </button>
         </div>
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden mt-4 space-y-2 px-4 pb-4">
-            <a href="index.html#hero" class="block text-gray-700 dark:text-gray-200 hover:bg-indigo-50 dark:hover:bg-gray-700 hover:text-indigo-600 dark:hover:text-indigo-400 px-3 py-2 rounded-md text-base font-medium transition-colors">Home</a>
-            <a href="index.html#ai-tools" class="block text-gray-700 dark:text-gray-200 hover:bg-indigo-50 dark:hover:bg-gray-700 hover:text-indigo-600 dark:hover:text-indigo-400 px-3 py-2 rounded-md text-base font-medium transition-colors">AI Tools</a>
-            <a href="index.html#mission" class="block text-gray-700 dark:text-gray-200 hover:bg-indigo-50 dark:hover:bg-gray-700 hover:text-indigo-600 dark:hover:text-indigo-400 px-3 py-2 rounded-md text-base font-medium transition-colors">Mission</a>
-            <a href="index.html#rate-us" class="block text-gray-700 dark:text-gray-200 hover:bg-indigo-50 dark:hover:bg-gray-700 hover:text-indigo-600 dark:hover:text-indigo-400 px-3 py-2 rounded-md text-base font-medium transition-colors">Rate Us</a>
-            <a href="blog.html" class="block text-gray-700 dark:text-gray-200 hover:bg-indigo-50 dark:hover:bg-gray-700 hover:text-indigo-600 dark:hover:text-indigo-400 px-3 py-2 rounded-md text-base font-medium transition-colors">Blog</a>
-            <a href="ebook.html" class="block text-gray-700 dark:text-gray-200 hover:bg-indigo-50 dark:hover:bg-gray-700 hover:text-indigo-600 dark:hover:text-indigo-400 px-3 py-2 rounded-md text-base font-medium transition-colors">Ebooks</a>
+        <div id="mobile-menu" class="hidden md:hidden px-6 pt-2 pb-4 bg-white/95 backdrop-blur-md">
+            <a href="index.html#home" class="block py-2 text-slate-600 hover:text-indigo-600">Home</a>
+            <a href="index.html#mission" class="block py-2 text-slate-600 hover:text-indigo-600">Our Mission</a>
+            <a href="index.html#team" class="block py-2 text-slate-600 hover:text-indigo-600">Our Team</a>
+            <a href="index.html#rate-us" class="block py-2 text-slate-600 hover:text-indigo-600">Rate Us</a>
         </div>
     </nav>
 
-    <!-- Ebook Store Section -->
-    <section id="ebook-store" class="py-20 px-4 bg-gray-50 dark:bg-bg-color min-h-screen">
-        <div class="container mx-auto text-center mt-16">
-            <h1 class="text-5xl md:text-6xl font-extrabold text-indigo-700 dark:text-indigo-400 mb-12">Our Ebook Collection</h1>
-            <p class="text-xl text-gray-600 dark:text-section-text-light mb-8 max-w-3xl mx-auto">
-                Discover a wide range of insightful ebooks curated to expand your knowledge and empower your journey. Purchase instantly and download your copy.
-            </p>
-
-            <!-- Currency Selector -->
-            <div class="mb-10 flex justify-center items-center">
-                <label for="currency-select" class="text-lg font-medium text-gray-700 dark:text-gray-200 mr-4">Select Currency:</label>
-                <select id="currency-select" class="p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200 focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
-                    <option value="USD">USD ($) - United States Dollar</option>
-                    <option value="INR">INR (₹) - Indian Rupee</option>
-                    <option value="EUR">EUR (€) - Euro</option>
-                    <option value="GBP">GBP (£) - British Pound</option>
-                    <option value="JPY">JPY (¥) - Japanese Yen</option>
-                    <option value="CAD">CAD (C$) - Canadian Dollar</option>
-                    <option value="AUD">AUD (A$) - Australian Dollar</option>
-                    <option value="CHF">CHF (Fr.) - Swiss Franc</option>
-                    <option value="CNY">CNY (¥) - Chinese Yuan</option>
-                    <option value="SEK">SEK (kr) - Swedish Krona</option>
-                    <option value="NZD">NZD (NZ$) - New Zealand Dollar</option>
-                    <option value="MXN">MXN (Mex$) - Mexican Peso</option>
-                    <option value="SGD">SGD (S$) - Singapore Dollar</option>
-                    <option value="HKD">HKD (HK$) - Hong Kong Dollar</option>
-                    <option value="NOK">NOK (kr) - Norwegian Krone</option>
-                    <option value="KRW">KRW (₩) - South Korean Won</option>
-                    <option value="BRL">BRL (R$) - Brazilian Real</option>
-                    <option value="RUB">RUB (₽) - Russian Ruble</option>
-                    <option value="ZAR">ZAR (R) - South African Rand</option>
-                    <option value="AED">AED (د.إ) - UAE Dirham</option>
-                    <option value="SAR">SAR (ر.س) - Saudi Riyal</option>
-                    <option value="TRY">TRY (₺) - Turkish Lira</option>
-                    <option value="PLN">PLN (zł) - Polish Zloty</option>
-                    <option value="THB">THB (฿) - Thai Baht</option>
-                    <option value="IDR">IDR (Rp) - Indonesian Rupiah</option>
-                    <option value="PHP">PHP (₱) - Philippine Peso</option>
-                    <option value="MYR">MYR (RM) - Malaysian Ringgit</option>
-                    <option value="VND">VND (₫) - Vietnamese Dong</option>
-                    <option value="EGP">EGP (E£) - Egyptian Pound</option>
-                    <option value="CLP">CLP ($) - Chilean Peso</option>
-                    <option value="COP">COP ($) - Colombian Peso</option>
-                    <option value="ARS">ARS ($) - Argentine Peso</option>
-                    <option value="ILS">ILS (₪) - Israeli New Shekel</option>
-                </select>
+    <!-- Main Content -->
+    <main class="py-16 sm:py-24">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h1 class="text-4xl md:text-5xl font-extrabold mb-4 text-gradient">Our E-book Collection</h1>
+                <p class="text-lg text-slate-600 max-w-2xl mx-auto">Expand your knowledge with our curated collection of insightful e-books.</p>
             </div>
 
-            <div id="ebook-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
-                <!-- Ebook Card 1 -->
-                <div class="bg-card dark:bg-card-bg p-6 rounded-2xl shadow-lg border border-card dark:border-card-border transform hover:scale-105 transition-transform duration-300 flex flex-col items-center">
-                    <img src="https://placehold.co/200x280/A78BFA/ffffff?text=Ebook+1" alt="Ebook Cover 1" class="w-full h-auto rounded-lg mb-6 shadow-md object-cover">
-                    <h3 class="text-2xl font-bold text-indigo-800 dark:text-indigo-300 mb-2">The Future of AI</h3>
-                    <p class="text-indigo-600 dark:text-indigo-200 font-medium mb-3">By B.Krishna</p>
-                    <p class="text-gray-600 dark:text-card-text mb-4 text-center flex-grow">
-                        An in-depth look into the advancements and ethical considerations of artificial intelligence.
-                    </p>
-                    <p class="ebook-price text-3xl font-bold text-green-600 dark:text-green-400 mb-6" data-base-price="19.99"></p>
-                    <button class="buy-now-btn bg-button text-button font-bold py-3 px-8 rounded-full hover:bg-button-hover transition-colors duration-300 shadow-md transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-indigo-500 focus:ring-opacity-50" data-ebook-title="The Future of AI" data-download-url="ebook_future_of_ai.pdf">
-                        Buy Now
-                    </button>
+            <!-- Search and Filter Controls -->
+            <div class="mb-12 flex flex-col gap-8">
+                 <!-- Currency Selector -->
+                <div class="flex justify-center">
+                    <div class="flex items-center space-x-3 bg-white p-2 rounded-lg shadow">
+                        <label for="currency-selector" class="font-medium text-slate-700">Currency:</label>
+                        <select id="currency-selector" name="currency" class="rounded-md border-slate-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                            <!-- Currencies will be populated by JS -->
+                        </select>
+                    </div>
+                </div>
+                <!-- Search Bar -->
+                <form id="search-form" class="relative w-full md:w-1/2 mx-auto">
+                    <input type="text" id="search-bar" placeholder="Search for e-books by title..." class="w-full pl-12 pr-4 py-3 border border-slate-300 rounded-full shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 text-lg">
+                    <i class="fas fa-search absolute left-5 top-1/2 transform -translate-y-1/2 text-slate-400"></i>
+                </form>
+                <!-- Genre Filters -->
+                <div id="genre-filters" class="flex flex-wrap justify-center gap-3">
+                    <button class="genre-btn active" data-genre="all">All Genres</button>
+                    <button class="genre-btn" data-genre="Technology">Technology</button>
+                    <button class="genre-btn" data-genre="Education">Education</button>
+                    <button class="genre-btn" data-genre="Science">Science</button>
+                    <button class="genre-btn" data-genre="Lifestyle">Lifestyle</button>
+                    <button class="genre-btn" data-genre="Philosophy">Philosophy</button>
+                    <button class="genre-btn" data-genre="Creativity">Creativity</button>
+                </div>
+            </div>
+
+
+            <!-- E-books Grid -->
+            <div id="ebook-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- E-book 1 -->
+                <div class="ebook-card bg-white rounded-lg shadow-md overflow-hidden flex flex-col" data-genre="Technology">
+                    <div class="bg-indigo-100 text-indigo-500 h-48 flex items-center justify-center text-6xl">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="text-xl font-bold text-slate-800">The Future of AI</h3>
+                        <p class="text-slate-600 mt-2 flex-1">An in-depth look into the advancements and ethical considerations of artificial intelligence.</p>
+                        <button class="buy-now-btn mt-6 w-full bg-indigo-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-indigo-700 transition-colors" data-title="The Future of AI" data-price-usd="19.99" data-file-name="The_Future_of_AI.txt" data-icon="fa-brain">
+                            Buy Now
+                        </button>
+                    </div>
                 </div>
 
-                <!-- Ebook Card 2 -->
-                <div class="bg-card dark:bg-card-bg p-6 rounded-2xl shadow-lg border border-card dark:border-card-border transform hover:scale-105 transition-transform duration-300 flex flex-col items-center">
-                    <img src="https://placehold.co/200x280/6BFFB8/374151?text=Ebook+2" alt="Ebook Cover 2" class="w-full h-auto rounded-lg mb-6 shadow-md object-cover">
-                    <h3 class="text-2xl font-bold text-indigo-800 dark:text-indigo-300 mb-2">Mastering on How to Reasearch?</h3>
-                    <p class="text-indigo-600 dark:text-indigo-200 font-medium mb-3">By B.Krishna</p>
-                    <p class="text-gray-600 dark:text-card-text mb-4 text-center flex-grow">
-                        A comprehensive guide for beginners and experienced researchers to build ideas and theories.
-                    </p>
-                    <p class="ebook-price text-3xl font-bold text-green-600 dark:text-green-400 mb-6" data-base-price="29.99"></p>
-                    <button class="buy-now-btn bg-button text-button font-bold py-3 px-8 rounded-full hover:bg-button-hover transition-colors duration-300 shadow-md transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-indigo-500 focus:ring-opacity-50" data-ebook-title="Mastering Web Development" data-download-url="ebook_web_dev.pdf">
-                        Buy Now
-                    </button>
+                <!-- E-book 2 -->
+                <div class="ebook-card bg-white rounded-lg shadow-md overflow-hidden flex flex-col" data-genre="Education">
+                    <div class="bg-purple-100 text-purple-500 h-48 flex items-center justify-center text-6xl">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="text-xl font-bold text-slate-800">Mastering on How to Research?</h3>
+                        <p class="text-slate-600 mt-2 flex-1">A comprehensive guide for beginners and experienced researchers to build ideas and theories.</p>
+                        <button class="buy-now-btn mt-6 w-full bg-indigo-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-indigo-700 transition-colors" data-title="Mastering on How to Research" data-price-usd="24.99" data-file-name="Mastering_Research.txt" data-icon="fa-search">
+                            Buy Now
+                        </button>
+                    </div>
                 </div>
 
-                <!-- Ebook Card 3 -->
-                <div class="bg-card dark:bg-card-bg p-6 rounded-2xl shadow-lg border border-card dark:border-card-border transform hover:scale-105 transition-transform duration-300 flex flex-col items-center">
-                    <img src="https://placehold.co/200x280/FFD166/374151?text=Ebook+3" alt="Ebook Cover 3" class="w-full h-auto rounded-lg mb-6 shadow-md object-cover">
-                    <h3 class="text-2xl font-bold text-indigo-800 dark:text-indigo-300 mb-2">Are we ALONE</h3>
-                    <p class="text-indigo-600 dark:text-indigo-200 font-medium mb-3">By B.Krishna</p>
-                    <p class="text-gray-600 dark:text-card-text mb-4 text-center flex-grow">
-                        Discover many possibilities of how alien life.
-                    </p>
-                    <p class="ebook-price text-3xl font-bold text-green-600 dark:text-green-400 mb-6" data-base-price="14.99"></p>
-                    <button class="buy-now-btn bg-button text-button font-bold py-3 px-8 rounded-full hover:bg-button-hover transition-colors duration-300 shadow-md transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-indigo-500 focus:ring-opacity-50" data-ebook-title="The Art of Storytelling" data-download-url="ebook_storytelling.pdf">
-                        Buy Now
-                    </button>
+                <!-- E-book 3 -->
+                <div class="ebook-card bg-white rounded-lg shadow-md overflow-hidden flex flex-col" data-genre="Science">
+                    <div class="bg-pink-100 text-pink-500 h-48 flex items-center justify-center text-6xl">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="text-xl font-bold text-slate-800">Are We ALONE?</h3>
+                        <p class="text-slate-600 mt-2 flex-1">Discover many possibilities of how alien life might exist and what it could mean for humanity.</p>
+                        <button class="buy-now-btn mt-6 w-full bg-indigo-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-indigo-700 transition-colors" data-title="Are We ALONE" data-price-usd="14.99" data-file-name="Are_We_ALONE.txt" data-icon="fa-rocket">
+                            Buy Now
+                        </button>
+                    </div>
                 </div>
 
-                <!-- Ebook Card 4 -->
-                <div class="bg-card dark:bg-card-bg p-6 rounded-2xl shadow-lg border border-card dark:border-card-border transform hover:scale-105 transition-transform duration-300 flex flex-col items-center">
-                    <img src="https://placehold.co/200x280/6B84FF/ffffff?text=Ebook+4" alt="Ebook Cover 4" class="w-full h-auto rounded-lg mb-6 shadow-md object-cover">
-                    <h3 class="text-2xl font-bold text-indigo-800 dark:text-indigo-300 mb-2">Sustainable Living Guide</h3>
-                    <p class="text-indigo-600 dark:text-indigo-200 font-medium mb-3">By B.Krishna</p>
-                    <p class="text-gray-600 dark:text-card-text mb-4 text-center flex-grow">
-                        Practical tips and strategies for a more environmentally friendly lifestyle.
-                    </p>
-                    <p class="ebook-price text-3xl font-bold text-green-600 dark:text-green-400 mb-6" data-base-price="12.50"></p>
-                    <button class="buy-now-btn bg-button text-button font-bold py-3 px-8 rounded-full hover:bg-button-hover transition-colors duration-300 shadow-md transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-indigo-500 focus:ring-opacity-50" data-ebook-title="Sustainable Living Guide" data-download-url="ebook_sustainable_living.pdf">
-                        Buy Now
-                    </button>
+                <!-- E-book 4 -->
+                <div class="ebook-card bg-white rounded-lg shadow-md overflow-hidden flex flex-col" data-genre="Lifestyle">
+                     <div class="bg-emerald-100 text-emerald-500 h-48 flex items-center justify-center text-6xl">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="text-xl font-bold text-slate-800">Sustainable Living Guide</h3>
+                        <p class="text-sm text-slate-500 mb-2">By B.Krishna</p>
+                        <p class="text-slate-600 mt-2 flex-1">Practical tips and strategies for a more environmentally friendly lifestyle.</p>
+                        <button class="buy-now-btn mt-6 w-full bg-indigo-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-indigo-700 transition-colors" data-title="Sustainable Living Guide" data-price-usd="18.99" data-file-name="Sustainable_Living_Guide.txt" data-icon="fa-leaf">
+                            Buy Now
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- E-book 5 -->
+                <div class="ebook-card bg-white rounded-lg shadow-md overflow-hidden flex flex-col" data-genre="Philosophy">
+                     <div class="bg-cyan-100 text-cyan-500 h-48 flex items-center justify-center text-6xl">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="text-xl font-bold text-slate-800">The Stoic Mind</h3>
+                        <p class="text-sm text-slate-500 mb-2">By B.Krishna</p>
+                        <p class="text-slate-600 mt-2 flex-1">Ancient wisdom for modern challenges. Find peace and resilience in everyday life.</p>
+                        <button class="buy-now-btn mt-6 w-full bg-indigo-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-indigo-700 transition-colors" data-title="The Stoic Mind" data-price-usd="17.50" data-file-name="The_Stoic_Mind.txt" data-icon="fa-book-open">
+                            Buy Now
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- E-book 6 -->
+                <div class="ebook-card bg-white rounded-lg shadow-md overflow-hidden flex flex-col" data-genre="Lifestyle">
+                     <div class="bg-orange-100 text-orange-500 h-48 flex items-center justify-center text-6xl">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="text-xl font-bold text-slate-800">Digital Minimalism</h3>
+                        <p class="text-sm text-slate-500 mb-2">By B.Krishna</p>
+                        <p class="text-slate-600 mt-2 flex-1">A practical guide to a more focused and intentional life in the digital age.</p>
+                        <button class="buy-now-btn mt-6 w-full bg-indigo-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-indigo-700 transition-colors" data-title="Digital Minimalism" data-price-usd="21.00" data-file-name="Digital_Minimalism.txt" data-icon="fa-mobile-alt">
+                            Buy Now
+                        </button>
+                    </div>
+                </div>
+
+                <!-- E-book 7 -->
+                <div class="ebook-card bg-white rounded-lg shadow-md overflow-hidden flex flex-col" data-genre="Creativity">
+                     <div class="bg-rose-100 text-rose-500 h-48 flex items-center justify-center text-6xl">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="text-xl font-bold text-slate-800">The Art of Storytelling</h3>
+                        <p class="text-sm text-slate-500 mb-2">By B.Krishna</p>
+                        <p class="text-slate-600 mt-2 flex-1">Learn to captivate, inspire, and persuade through the power of narrative.</p>
+                        <button class="buy-now-btn mt-6 w-full bg-indigo-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-indigo-700 transition-colors" data-title="The Art of Storytelling" data-price-usd="22.50" data-file-name="The_Art_of_Storytelling.txt" data-icon="fa-comments">
+                            Buy Now
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- Purchase Confirmation Modal -->
-    <div id="purchase-modal" class="hidden fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-[1001]">
-        <div class="bg-white dark:bg-nav-bg p-8 rounded-lg shadow-xl text-center max-w-sm mx-auto relative">
-            <button class="modal-close-button absolute top-3 right-3 text-gray-700 dark:text-gray-300 hover:text-red-500 text-2xl font-bold">&times;</button>
-            <h3 class="text-2xl font-bold text-indigo-700 dark:text-indigo-400 mb-4">Purchase Successful!</h3>
-            <p class="text-gray-700 dark:text-text-color mb-6">
-                Thank you for your purchase of "<span id="purchased-ebook-title" class="font-semibold"></span>". Your download should begin shortly.
-            </p>
-            <button id="close-purchase-modal" class="bg-indigo-600 text-white font-bold py-2 px-6 rounded-full hover:bg-indigo-700 transition-colors duration-300">
-                Close
-            </button>
-        </div>
-    </div>
-
+    </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 dark:bg-footer-bg text-white py-10 px-4 rounded-t-3xl shadow-inner">
-        <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-left">
-            <!-- About Section -->
-            <div>
-                <h3 class="text-xl font-bold mb-4 text-indigo-400 dark:text-footer-heading">About WCG.in</h3>
-                <p class="text-gray-400 dark:text-footer-text text-sm leading-relaxed">
-                    Wisdom Circle Group is dedicated to fostering a community of learners and innovators, sharing knowledge and driving positive change through collective intelligence.
-                </p>
-            </div>
-
-            <!-- Contact Section -->
-            <div>
-                <h3 class="text-xl font-bold mb-4 text-indigo-400 dark:text-footer-heading">Contact Us</h3>
-                <p class="text-gray-400 dark:text-footer-text text-sm mb-2 flex items-center">
-                    <svg class="w-4 h-4 mr-2 text-indigo-300 dark:text-footer-icon" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zM12.75 6a.75.75 0 00-1.5 0v6.25a.75.75 0 00.22.53l3.25 3.25a.75.75 0 101.06-1.06L13.5 12.25V6z" clip-rule="evenodd" />
-                    </svg>
-                    <span class="font-semibold">Address:</span> 123 Wisdom Lane, Knowledge City, WC 56789
-                </p>
-                <p class="text-gray-400 dark:text-footer-text text-sm mb-2 flex items-center">
-                    <svg class="w-4 h-4 mr-2 text-indigo-300 dark:text-footer-icon" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path fill-rule="evenodd" d="M1.5 4.5a3 3 0 013-3h15a3 3 0 013 3v15a3 3 0 01-3 3H4.5a3 3 0 01-3-3V4.5zM12 7.5a.75.75 0 01.75.75v3.75a.75.75 0 01-1.5 0V8.25A.75.75 0 0112 7.5zM12 16.5a.75.75 0 00-1.5 0v.008a.75.75 0 001.5 0v-.008z" clip-rule="evenodd" />
-                    </svg>
-                    <span class="font-semibold">Phone:</span> +91 98765 43210
-                </p>
-                <p class="text-gray-400 dark:text-footer-text text-sm flex items-center">
-                    <svg class="w-4 h-4 mr-2 text-indigo-300 dark:text-footer-icon" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path fill-rule="evenodd" d="M1.5 4.5a3 3 0 013-3h15a3 3 0 013 3v15a3 3 0 01-3 3H4.5a3 3 0 01-3-3V4.5zM4.5 3a1.5 1.5 0 00-1.5 1.5V6h18V4.5a1.5 1.5 0 00-1.5-1.5H4.5zM3 9v10.5a1.5 1.5 0 001.5 1.5h15a1.5 1.5 0 001.5-1.5V9H3zM12 11.25a.75.75 0 00-1.5 0v1.5a.75.75 0 001.5 0v-1.5z" clip-rule="evenodd" />
-                    </svg>
-                    <span class="font-semibold">Email:</span> <a href="mailto:info@wcg.in" class="hover:text-white transition-colors">info@wcg.in</a>
-                </p>
-            </div>
-
-            <!-- Quick Links Section -->
-            <div>
-                <h3 class="text-xl font-bold mb-4 text-indigo-400 dark:text-footer-heading">Quick Links</h3>
-                <ul class="space-y-2">
-                    <li><a href="#" class="text-gray-400 dark:text-footer-link hover:text-white dark:hover:text-footer-link-hover transition-colors text-sm">Privacy Policy</a></li>
-                    <li><a href="#" class="text-gray-400 dark:text-footer-link hover:text-white dark:hover:text-footer-link-hover transition-colors text-sm">Terms of Service</a></li>
-                    <li><a href="#" class="text-gray-400 dark:text-footer-link hover:text-white dark:hover:text-footer-link-hover transition-colors text-sm">Support</a></li>
-                    <li><a href="blog.html" class="text-gray-400 dark:text-footer-link hover:text-white dark:hover:text-footer-link-hover transition-colors text-sm">Our Blog</a></li>
-                </ul>
-            </div>
-
-            <!-- Newsletter & Social Media Section -->
-            <div>
-                <h3 class="text-xl font-bold mb-4 text-indigo-400 dark:text-footer-heading">Stay Connected</h3>
-                <p class="text-gray-400 dark:text-footer-text text-sm mb-4">
-                    Stay updated with our latest insights and news.
-                </p>
-                <form class="flex flex-col gap-3 mb-6">
-                    <div class="relative">
-                        <input type="email" placeholder="Your email address" class="p-3 pl-10 rounded-md bg-gray-700 dark:bg-footer-input-bg text-white dark:text-ai-input-text border border-gray-600 dark:border-footer-input-border focus:outline-none focus:ring-2 focus:ring-indigo-500 placeholder-gray-400 dark:placeholder-footer-input-placeholder text-sm w-full">
-                        <svg class="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-indigo-300 dark:text-footer-icon" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.695 4.347a3 3 0 01-2.61 0L1.5 8.67zM22.5 6.542V5.25a3 3 0 00-3-3h-15a3 3 0 00-3 3v1.292L12 11.292l10.5-4.75z" />
-                        </svg>
-                    </div>
-                    <button type="submit" class="bg-indigo-600 text-white font-bold py-3 px-6 rounded-md hover:bg-indigo-700 transition-colors duration-300 shadow-md text-sm">
-                        Subscribe
-                    </button>
-                </form>
-
-                <!-- Social Media Icons -->
-                <div class="flex space-x-4 justify-center md:justify-start">
-                    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="text-gray-400 dark:text-footer-link hover:text-white dark:hover:text-footer-link-hover transition-colors">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                            <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33V22C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" />
-                        </svg>
-                    </a>
-                    <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="text-gray-400 dark:text-footer-link hover:text-white dark:hover:text-footer-link-hover transition-colors">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.13l-6.66-8.892L2.83 22H.51l8.026-10.776L1.48 2.25H4.93l5.087 6.76L17.22 2.25h1.024zM17.487 20.2H19.2L7.368 3.75H5.5l12.007 16.45z" />
-                        </svg>
-                    </a>
-                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="text-gray-400 dark:text-footer-link hover:text-white dark:hover:text-footer-link-hover transition-colors">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                            <path fill-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clip-rule="evenodd" />
-                        </svg>
-                    </a>
+    <footer class="bg-slate-800 text-slate-300 pt-16 pb-8">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+                <!-- About WCG -->
+                <div class="col-span-1">
+                    <h3 class="text-xl font-bold text-white mb-4">Wisdom Circle Group</h3>
+                    <p class="text-sm">Fostering a community of shared knowledge, growth, and collaboration for a brighter future.</p>
+                </div>
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-lg font-semibold text-white mb-4">Quick Links</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="index.html#home" class="hover:text-white transition-colors">Home</a></li>
+                        <li><a href="index.html#mission" class="hover:text-white transition-colors">Our Mission</a></li>
+                        <li><a href="index.html#team" class="hover:text-white transition-colors">Our Team</a></li>
+                        <li><a href="privacy.html" class="hover:text-white transition-colors">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="text-lg font-semibold text-white mb-4">Contact Us</h3>
+                    <address class="not-italic space-y-2 text-sm">
+                        <p><i class="fas fa-map-marker-alt mr-2 w-4 text-center"></i>123 Wisdom Lane, Knowledge City, 500081</p>
+                        <p><i class="fas fa-phone mr-2 w-4 text-center"></i>(123) 456-7890</p>
+                        <p><i class="fas fa-envelope mr-2 w-4 text-center"></i><a href="mailto:info@wcg.com" class="hover:text-white transition-colors">info@wcg.com</a></p>
+                    </address>
+                </div>
+                <!-- Newsletter -->
+                <div>
+                    <h3 class="text-lg font-semibold text-white mb-4">Join Our Newsletter</h3>
+                    <p class="text-sm mb-3">Get the latest updates and insights from our community.</p>
+                    <form id="newsletter-form" class="flex">
+                        <input type="email" id="newsletter-email" placeholder="Your email" class="w-full rounded-l-md px-3 py-2 text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
+                        <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-r-md transition-colors">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                    <p id="newsletter-feedback" class="text-xs mt-2 h-4"></p>
                 </div>
             </div>
-        </div>
-        <div class="text-center mt-10 border-t border-gray-700 dark:border-gray-600 pt-8">
-            <p class="text-gray-500 dark:text-gray-400 text-sm">&copy; 2025 Wisdom Circle Group (WCG.in). All rights reserved.</p>
-            <p class="mt-2 text-gray-500 dark:text-gray-400 text-sm">Built with passion and collective wisdom.</p>
+            <div class="border-t border-slate-700 pt-8 flex flex-col sm:flex-row justify-between items-center">
+                <p class="text-sm text-center sm:text-left mb-4 sm:mb-0">&copy; 2024 Wisdom Circle Group. All Rights Reserved.</p>
+                <div class="flex space-x-4">
+                    <a href="#" class="hover:text-white transition-colors"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="hover:text-white transition-colors"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="hover:text-white transition-colors"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="hover:text-white transition-colors"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
         </div>
     </footer>
 
+    <!-- Purchase Confirmation Modal -->
+    <div id="purchase-modal" class="fixed inset-0 z-[60] items-center justify-center bg-black/60 popup-overlay hidden">
+        <div class="bg-white rounded-lg shadow-2xl w-11/12 max-w-md mx-auto transform transition-transform duration-300 scale-95">
+            <div class="p-6 text-center">
+                <h2 class="text-2xl font-bold mb-4">Confirm Your Purchase</h2>
+                <div id="modal-ebook-icon" class="text-7xl text-indigo-500 my-6">
+                    <!-- Icon will be set by JS -->
+                </div>
+                <h3 id="modal-ebook-title" class="text-xl font-semibold text-slate-800"></h3>
+                <p id="modal-ebook-price" class="text-3xl font-bold text-gradient my-4"></p>
+                <p class="text-slate-500 text-sm mb-6">By clicking "Confirm Purchase", you agree to our terms of sale. Your e-book will be downloaded immediately.</p>
+                <div class="flex justify-center gap-4">
+                    <button id="cancel-purchase-btn" class="bg-slate-200 text-slate-800 font-bold py-3 px-6 rounded-lg hover:bg-slate-300 transition-colors">Cancel</button>
+                    <button id="confirm-purchase-btn" class="bg-indigo-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-indigo-700 transition-colors">Confirm Purchase</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
     <script>
-        // Dark Mode Functionality (copied from homepage for consistency)
-        const themeToggle = document.getElementById('theme-toggle');
-        const sunIcon = document.getElementById('sun-icon');
-        const moonIcon = document.getElementById('moon-icon');
+        document.addEventListener('DOMContentLoaded', async function () {
+            // --- Element Selectors ---
+            const currencySelector = document.getElementById('currency-selector');
+            const purchaseModal = document.getElementById('purchase-modal');
+            const modalContent = purchaseModal ? purchaseModal.querySelector('div') : null;
+            const confirmBtn = document.getElementById('confirm-purchase-btn');
+            const cancelBtn = document.getElementById('cancel-purchase-btn');
+            const modalTitle = document.getElementById('modal-ebook-title');
+            const modalPrice = document.getElementById('modal-ebook-price');
+            const modalIcon = document.getElementById('modal-ebook-icon');
+            const searchForm = document.getElementById('search-form');
+            const searchBar = document.getElementById('search-bar');
+            const genreFilters = document.getElementById('genre-filters');
+            const ebookGrid = document.getElementById('ebook-grid');
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const newsletterForm = document.getElementById('newsletter-form');
+            
+            let activeBook = {};
+            let exchangeRates = {};
+            let activeGenre = 'all';
 
-        function applyTheme(theme) {
-            if (theme === 'dark') {
-                document.documentElement.classList.add('dark');
-                moonIcon.classList.remove('hidden');
-                sunIcon.classList.add('hidden');
-            } else {
-                document.documentElement.classList.remove('dark');
-                sunIcon.classList.remove('hidden');
-                moonIcon.classList.add('hidden');
-            }
-        }
+            // --- Currency Data ---
+            const currencies = {
+                "USD": {"symbol":"$","name":"US Dollar"},"EUR":{"symbol":"€","name":"Euro"},"JPY":{"symbol":"¥","name":"Japanese Yen"},"GBP":{"symbol":"£","name":"British Pound Sterling"},"AUD":{"symbol":"$","name":"Australian Dollar"},"CAD":{"symbol":"$","name":"Canadian Dollar"},"CHF":{"symbol":"CHF","name":"Swiss Franc"},"CNY":{"symbol":"¥","name":"Chinese Yuan"},"SEK":{"symbol":"kr","name":"Swedish Krona"},"NZD":{"symbol":"$","name":"New Zealand Dollar"},"MXN":{"symbol":"$","name":"Mexican Peso"},"SGD":{"symbol":"$","name":"Singapore Dollar"},"HKD":{"symbol":"$","name":"Hong Kong Dollar"},"NOK":{"symbol":"kr","name":"Norwegian Krone"},"KRW":{"symbol":"₩","name":"South Korean Won"},"TRY":{"symbol":"₺","name":"Turkish Lira"},"RUB":{"symbol":"₽","name":"Russian Ruble"},"INR":{"symbol":"₹","name":"Indian Rupee"},"BRL":{"symbol":"R$","name":"Brazilian Real"},"ZAR":{"symbol":"R","name":"South African Rand"}, "AED": {"symbol": "د.إ", "name": "United Arab Emirates Dirham"}, "AFN": {"symbol": "؋", "name": "Afghan Afghani"}, "ALL": {"symbol": "L", "name": "Albanian Lek"}, "AMD": {"symbol": "֏", "name": "Armenian Dram"}, "ANG": {"symbol": "ƒ", "name": "Netherlands Antillean Guilder"}, "AOA": {"symbol": "Kz", "name": "Angolan Kwanza"}, "ARS": {"symbol": "$", "name": "Argentine Peso"}, "AWG": {"symbol": "ƒ", "name": "Aruban Florin"}, "AZN": {"symbol": "₼", "name": "Azerbaijani Manat"}, "BAM": {"symbol": "KM", "name": "Bosnia-Herzegovina Convertible Mark"}, "BBD": {"symbol": "$", "name": "Barbadian Dollar"}, "BDT": {"symbol": "৳", "name": "Bangladeshi Taka"}, "BGN": {"symbol": "лв", "name": "Bulgarian Lev"}, "BHD": {"symbol": ".د.ب", "name": "Bahraini Dinar"}, "BIF": {"symbol": "FBu", "name": "Burundian Franc"}, "BMD": {"symbol": "$", "name": "Bermudan Dollar"}, "BND": {"symbol": "$", "name": "Brunei Dollar"}, "BOB": {"symbol": "Bs.", "name": "Bolivian Boliviano"}, "BSD": {"symbol": "$", "name": "Bahamian Dollar"}, "BTN": {"symbol": "Nu.", "name": "Bhutanese Ngultrum"}, "BWP": {"symbol": "P", "name": "Botswanan Pula"}, "BYN": {"symbol": "Br", "name": "Belarusian Ruble"}, "BZD": {"symbol": "BZ$", "name": "Belize Dollar"}, "CDF": {"symbol": "FC", "name": "Congolese Franc"}, "CLP": {"symbol": "$", "name": "Chilean Peso"}, "COP": {"symbol": "$", "name": "Colombian Peso"}, "CRC": {"symbol": "₡", "name": "Costa Rican Colón"}, "CUP": {"symbol": "₱", "name": "Cuban Peso"}, "CVE": {"symbol": "$", "name": "Cape Verdean Escudo"}, "CZK": {"symbol": "Kč", "name": "Czech Republic Koruna"}, "DJF": {"symbol": "Fdj", "name": "Djiboutian Franc"}, "DKK": {"symbol": "kr", "name": "Danish Krone"}, "DOP": {"symbol": "RD$", "name": "Dominican Peso"}, "DZD": {"symbol": "دج", "name": "Algerian Dinar"}, "EGP": {"symbol": "£", "name": "Egyptian Pound"}, "ERN": {"symbol": "Nfk", "name": "Eritrean Nakfa"}, "ETB": {"symbol": "Br", "name": "Ethiopian Birr"}, "FJD": {"symbol": "$", "name": "Fijian Dollar"}, "FKP": {"symbol": "£", "name": "Falkland Islands Pound"}, "FOK": {"symbol": "kr", "name": "Faroese Króna"}, "GEL": {"symbol": "₾", "name": "Georgian Lari"}, "GGP": {"symbol": "£", "name": "Guernsey Pound"}, "GHS": {"symbol": "GH₵", "name": "Ghanaian Cedi"}, "GIP": {"symbol": "£", "name": "Gibraltar Pound"}, "GMD": {"symbol": "D", "name": "Gambian Dalasi"}, "GNF": {"symbol": "FG", "name": "Guinean Franc"}, "GTQ": {"symbol": "Q", "name": "Guatemalan Quetzal"}, "GYD": {"symbol": "$", "name": "Guyanaese Dollar"}, "HNL": {"symbol": "L", "name": "Honduran Lempira"}, "HRK": {"symbol": "kn", "name": "Croatian Kuna"}, "HTG": {"symbol": "G", "name": "Haitian Gourde"}, "HUF": {"symbol": "Ft", "name": "Hungarian Forint"}, "IDR": {"symbol": "Rp", "name": "Indonesian Rupiah"}, "ILS": {"symbol": "₪", "name": "Israeli New Sheqel"}, "IMP": {"symbol": "£", "name": "Manx pound"}, "IQD": {"symbol": "ع.د", "name": "Iraqi Dinar"}, "IRR": {"symbol": "﷼", "name": "Iranian Rial"}, "ISK": {"symbol": "kr", "name": "Icelandic Króna"}, "JEP": {"symbol": "£", "name": "Jersey Pound"}, "JMD": {"symbol": "J$", "name": "Jamaican Dollar"}, "JOD": {"symbol": "JD", "name": "Jordanian Dinar"}, "KES": {"symbol": "KSh", "name": "Kenyan Shilling"}, "KGS": {"symbol": "лв", "name": "Kyrgystani Som"}, "KHR": {"symbol": "៛", "name": "Cambodian Riel"}, "KID": {"symbol": "$", "name": "Kiribati Dollar"}, "KMF": {"symbol": "CF", "name": "Comorian Franc"}, "KWD": {"symbol": "KD", "name": "Kuwaiti Dinar"}, "KYD": {"symbol": "$", "name": "Cayman Islands Dollar"}, "KZT": {"symbol": "₸", "name": "Kazakhstani Tenge"}, "LAK": {"symbol": "₭", "name": "Laotian Kip"}, "LBP": {"symbol": "£", "name": "Lebanese Pound"}, "LKR": {"symbol": "₨", "name": "Sri Lankan Rupee"}, "LRD": {"symbol": "$", "name": "Liberian Dollar"}, "LSL": {"symbol": "L", "name": "Lesotho Loti"}, "LYD": {"symbol": "LD", "name": "Libyan Dinar"}, "MAD": {"symbol": "MAD", "name": "Moroccan Dirham"}, "MDL": {"symbol": "L", "name": "Moldovan Leu"}, "MGA": {"symbol": "Ar", "name": "Malagasy Ariary"}, "MKD": {"symbol": "ден", "name": "Macedonian Denar"}, "MMK": {"symbol": "K", "name": "Myanma Kyat"}, "MNT": {"symbol": "₮", "name": "Mongolian Tugrik"}, "MOP": {"symbol": "MOP$", "name": "Macanese Pataca"}, "MRU": {"symbol": "UM", "name": "Mauritanian Ouguiya"}, "MUR": {"symbol": "₨", "name": "Mauritian Rupee"}, "MVR": {"symbol": "Rf", "name": "Maldivian Rufiyaa"}, "MWK": {"symbol": "MK", "name": "Malawian Kwacha"}, "MYR": {"symbol": "RM", "name": "Malaysian Ringgit"}, "MZN": {"symbol": "MT", "name": "Mozambican Metical"}, "NAD": {"symbol": "$", "name": "Namibian Dollar"}, "NGN": {"symbol": "₦", "name": "Nigerian Naira"}, "NIO": {"symbol": "C$", "name": "Nicaraguan Córdoba"}, "NPR": {"symbol": "₨", "name": "Nepalese Rupee"}, "OMR": {"symbol": "﷼", "name": "Omani Rial"}, "PAB": {"symbol": "B/.", "name": "Panamanian Balboa"}, "PEN": {"symbol": "S/.", "name": "Peruvian Nuevo Sol"}, "PGK": {"symbol": "K", "name": "Papua New Guinean Kina"}, "PHP": {"symbol": "₱", "name": "Philippine Peso"}, "PKR": {"symbol": "₨", "name": "Pakistani Rupee"}, "PLN": {"symbol": "zł", "name": "Polish Zloty"}, "PYG": {"symbol": "Gs", "name": "Paraguayan Guarani"}, "QAR": {"symbol": "﷼", "name": "Qatari Rial"}, "RON": {"symbol": "lei", "name": "Romanian Leu"}, "RSD": {"symbol": "Дин.", "name": "Serbian Dinar"}, "RWF": {"symbol": "R₣", "name": "Rwandan Franc"}, "SAR": {"symbol": "﷼", "name": "Saudi Riyal"}, "SBD": {"symbol": "$", "name": "Solomon Islands Dollar"}, "SCR": {"symbol": "₨", "name": "Seychellois Rupee"}, "SDG": {"symbol": "ج.س.", "name": "Sudanese Pound"}, "SHP": {"symbol": "£", "name": "Saint Helena Pound"}, "SLL": {"symbol": "Le", "name": "Sierra Leonean Leone"}, "SOS": {"symbol": "S", "name": "Somali Shilling"}, "SRD": {"symbol": "$", "name": "Surinamese Dollar"}, "SSP": {"symbol": "£", "name": "South Sudanese Pound"}, "STN": {"symbol": "Db", "name": "São Tomé and Príncipe Dobra"}, "SYP": {"symbol": "£", "name": "Syrian Pound"}, "SZL": {"symbol": "E", "name": "Swazi Lilangeni"}, "THB": {"symbol": "฿", "name": "Thai Baht"}, "TJS": {"symbol": "SM", "name": "Tajikistani Somoni"}, "TMT": {"symbol": "T", "name": "Turkmenistani Manat"}, "TND": {"symbol": "د.ت", "name": "Tunisian Dinar"}, "TOP": {"symbol": "T$", "name": "Tongan Paʻanga"}, "TTD": {"symbol": "TT$", "name": "Trinidad and Tobago Dollar"}, "TVD": {"symbol": "$", "name": "Tuvaluan Dollar"}, "TWD": {"symbol": "NT$", "name": "New Taiwan Dollar"}, "TZS": {"symbol": "TSh", "name": "Tanzanian Shilling"}, "UAH": {"symbol": "₴", "name": "Ukrainian Hryvnia"}, "UGX": {"symbol": "USh", "name": "Ugandan Shilling"}, "UYU": {"symbol": "$U", "name": "Uruguayan Peso"}, "UZS": {"symbol": "лв", "name": "Uzbekistan Som"}, "VES": {"symbol": "Bs.S", "name": "Venezuelan Bolívar Soberano"}, "VND": {"symbol": "₫", "name": "Vietnamese Dong"}, "VUV": {"symbol": "VT", "name": "Vanuatu Vatu"}, "WST": {"symbol": "WS$", "name": "Samoan Tala"}, "XAF": {"symbol": "FCFA", "name": "CFA Franc BEAC"}, "XCD": {"symbol": "$", "name": "East Caribbean Dollar"}, "XDR": {"symbol": "SDR", "name": "Special Drawing Rights"}, "XOF": {"symbol": "CFA", "name": "CFA Franc BCEAO"}, "XPF": {"symbol": "₣", "name": "CFP Franc"}, "YER": {"symbol": "﷼", "name": "Yemeni Rial"}, "ZMW": {"symbol": "ZK", "name": "Zambian Kwacha"}, "ZWL": {"symbol": "$", "name": "Zimbabwean Dollar"}
+            };
 
-        // Check for saved theme preference on load
-        const currentTheme = localStorage.getItem('theme');
-        if (currentTheme) {
-            applyTheme(currentTheme);
-        } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            applyTheme('dark');
-        } else {
-            applyTheme('light');
-        }
+            // --- Price Conversion Logic ---
+            const updatePrices = () => {
+                if (!currencySelector || Object.keys(exchangeRates).length === 0) return;
 
-        themeToggle.addEventListener('click', () => {
-            const newTheme = document.documentElement.classList.contains('dark') ? 'light' : 'dark';
-            applyTheme(newTheme);
-            localStorage.setItem('theme', newTheme);
-        });
+                const selectedCurrencyCode = currencySelector.value;
+                const rate = exchangeRates[selectedCurrencyCode];
+                const symbol = currencies[selectedCurrencyCode].symbol;
 
-        // Ebook Data and Currency Conversion
-        const ebookPrices = [
-            { id: 'ebook1', basePrice: 19.99, title: 'The Future of AI', downloadUrl: 'ebook_future_of_ai.pdf' },
-            { id: 'ebook2', basePrice: 29.99, title: 'Mastering Web Development', downloadUrl: 'ebook_web_dev.pdf' },
-            { id: 'ebook3', basePrice: 14.99, title: 'The Art of Storytelling', downloadUrl: 'ebook_storytelling.pdf' },
-            { id: 'ebook4', basePrice: 12.50, title: 'Sustainable Living Guide', downloadUrl: 'ebook_sustainable_living.pdf' }
-        ];
+                document.querySelectorAll('.buy-now-btn').forEach(button => {
+                    const priceUSD = parseFloat(button.dataset.priceUsd);
+                    const convertedPrice = (priceUSD * rate).toFixed(2);
+                    button.textContent = `Buy Now (${symbol}${convertedPrice})`;
+                    button.dataset.currentPrice = `${symbol}${convertedPrice}`;
+                });
+            };
 
-        // Hardcoded exchange rates relative to USD (for demonstration purposes)
-        const exchangeRates = {
-            'USD': 1.00,
-            'INR': 83.50,
-            'EUR': 0.92,
-            'GBP': 0.79,
-            'JPY': 156.00,
-            'CAD': 1.36,
-            'AUD': 1.50,
-            'CHF': 0.90,
-            'CNY': 7.25,
-            'SEK': 10.50,
-            'NZD': 1.63,
-            'MXN': 18.50,
-            'SGD': 1.35,
-            'HKD': 7.80,
-            'NOK': 10.70,
-            'KRW': 1380.00,
-            'BRL': 5.40,
-            'RUB': 89.00,
-            'ZAR': 18.00,
-            'AED': 3.67,
-            'SAR': 3.75,
-            'TRY': 32.50,
-            'PLN': 4.05,
-            'THB': 36.50,
-            'IDR': 16300.00,
-            'PHP': 58.00,
-            'MYR': 4.70,
-            'VND': 25400.00,
-            'EGP': 47.50,
-            'CLP': 930.00,
-            'COP': 4100.00,
-            'ARS': 910.00,
-            'ILS': 3.70
-        };
+            const fetchExchangeRates = async () => {
+                try {
+                    const response = await fetch('https://api.exchangerate-api.com/v4/latest/USD');
+                    if (!response.ok) throw new Error('Network response was not ok.');
+                    const data = await response.json();
+                    exchangeRates = data.rates;
+                    updatePrices();
+                } catch (error) {
+                    console.error("Failed to fetch exchange rates:", error);
+                    document.querySelectorAll('.buy-now-btn').forEach(button => {
+                        button.textContent = 'Price unavailable';
+                        button.disabled = true;
+                    });
+                }
+            };
+            
+            // --- Search and Filter Logic ---
+            const filterEbooks = () => {
+                if (!ebookGrid || !searchBar) return;
+                const searchTerm = searchBar.value.toLowerCase();
+                const ebookCards = ebookGrid.querySelectorAll('.ebook-card');
 
-        const currencySymbols = {
-            'USD': '$',
-            'INR': '₹',
-            'EUR': '€',
-            'GBP': '£',
-            'JPY': '¥',
-            'CAD': 'C$',
-            'AUD': 'A$',
-            'CHF': 'Fr.',
-            'CNY': '¥',
-            'SEK': 'kr',
-            'NZD': 'NZ$',
-            'MXN': 'Mex$',
-            'SGD': 'S$',
-            'HKD': 'HK$',
-            'NOK': 'kr',
-            'KRW': '₩',
-            'BRL': 'R$',
-            'RUB': '₽',
-            'ZAR': 'R',
-            'AED': 'د.إ',
-            'SAR': 'ر.س',
-            'TRY': '₺',
-            'PLN': 'zł',
-            'THB': '฿',
-            'IDR': 'Rp',
-            'PHP': '₱',
-            'MYR': 'RM',
-            'VND': '₫',
-            'EGP': 'E£',
-            'CLP': '$',
-            'COP': '$',
-            'ARS': '$',
-            'ILS': '₪'
-        };
+                ebookCards.forEach(card => {
+                    const title = card.querySelector('h3').textContent.toLowerCase();
+                    const genre = card.dataset.genre;
+                    const searchMatch = title.includes(searchTerm);
+                    const genreMatch = activeGenre === 'all' || genre === activeGenre;
 
-        const currencySelect = document.getElementById('currency-select');
-        const ebookPriceElements = document.querySelectorAll('.ebook-price');
+                    card.style.display = (searchMatch && genreMatch) ? 'flex' : 'none';
+                });
+            };
 
-        function updatePrices() {
-            const selectedCurrency = currencySelect.value;
-            const rate = exchangeRates[selectedCurrency];
-            const symbol = currencySymbols[selectedCurrency];
+            // --- Modal Logic ---
+            const showModal = (book) => {
+                if (!purchaseModal || !modalContent) return;
+                activeBook = book;
+                modalTitle.textContent = book.title;
+                modalPrice.textContent = book.currentPrice;
+                modalIcon.innerHTML = `<i class="fas ${book.icon}"></i>`;
 
-            ebookPriceElements.forEach(priceElement => {
-                const basePriceUSD = parseFloat(priceElement.dataset.basePrice);
-                const convertedPrice = (basePriceUSD * rate).toFixed(2); // Format to 2 decimal places
-                priceElement.textContent = `${symbol}${convertedPrice}`;
-            });
-        }
-
-        // Event listener for currency change
-        currencySelect.addEventListener('change', updatePrices);
-
-        // Initial price update on page load
-        document.addEventListener('DOMContentLoaded', updatePrices);
-
-
-        // Ebook Purchase and Download Functionality
-        document.querySelectorAll('.buy-now-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                const ebookTitle = this.dataset.ebookTitle;
-                const downloadUrl = this.dataset.downloadUrl;
-
-                // Simulate purchase process (e.g., payment gateway integration would go here)
-                console.log(`Simulating purchase for: ${ebookTitle}`);
-
-                // Show purchase confirmation modal
-                const purchaseModal = document.getElementById('purchase-modal');
-                document.getElementById('purchased-ebook-title').textContent = ebookTitle;
                 purchaseModal.classList.remove('hidden');
-                document.body.style.overflow = 'hidden'; // Prevent scrolling behind modal
+                purchaseModal.classList.add('flex');
+                setTimeout(() => modalContent.classList.remove('scale-95'), 10);
+            };
 
-                // Simulate download after a short delay
+            const hideModal = () => {
+                if (!purchaseModal || !modalContent) return;
+                modalContent.classList.add('scale-95');
                 setTimeout(() => {
-                    // For demonstration, create a dummy PDF file content
-                    const dummyPdfContent = "This is a dummy ebook content for " + ebookTitle + ". Thank you for your purchase!";
-                    const blob = new Blob([dummyPdfContent], { type: 'application/pdf' });
+                    purchaseModal.classList.add('hidden');
+                    purchaseModal.classList.remove('flex');
+                }, 300);
+            };
+            
+            // --- Purchase and Download Logic ---
+            if (confirmBtn) {
+                confirmBtn.addEventListener('click', () => {
+                    const fileContent = `Thank you for purchasing "${activeBook.title}" from Wisdom Circle Group.`;
+                    const blob = new Blob([fileContent], { type: 'text/plain;charset=utf-8' });
                     const url = URL.createObjectURL(blob);
-
                     const a = document.createElement('a');
                     a.href = url;
-                    a.download = downloadUrl; // Use the data-download-url as the filename
+                    a.download = activeBook.fileName;
                     document.body.appendChild(a);
                     a.click();
                     document.body.removeChild(a);
-                    URL.revokeObjectURL(url); // Clean up the URL object
-
-                    console.log(`Download initiated for: ${downloadUrl}`);
-                }, 1500); // Simulate a short processing time before download
-
-            });
-        });
-
-        // Close purchase modal
-        document.getElementById('close-purchase-modal').addEventListener('click', function() {
-            document.getElementById('purchase-modal').classList.add('hidden');
-            document.body.style.overflow = ''; // Restore scrolling
-        });
-
-        // Close modal using the 'x' button
-        document.querySelector('#purchase-modal .modal-close-button').addEventListener('click', function() {
-            document.getElementById('purchase-modal').classList.add('hidden');
-            document.body.style.overflow = ''; // Restore scrolling
-        });
-
-        // Close modal if clicking outside the content
-        document.getElementById('purchase-modal').addEventListener('click', (e) => {
-            if (e.target === document.getElementById('purchase-modal')) {
-                document.getElementById('purchase-modal').classList.add('hidden');
-                document.body.style.overflow = ''; // Restore scrolling
+                    URL.revokeObjectURL(url);
+                    hideModal();
+                });
             }
-        });
-
-        // Close modal with Escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && !document.getElementById('purchase-modal').classList.contains('hidden')) {
-                document.getElementById('purchase-modal').classList.add('hidden');
-                document.body.style.overflow = ''; // Restore scrolling
+            
+            // --- Initial Setup and Event Listeners ---
+            if (currencySelector) {
+                for (const code in currencies) {
+                    const option = document.createElement('option');
+                    option.value = code;
+                    option.textContent = `${code} - ${currencies[code].name}`;
+                    currencySelector.appendChild(option);
+                }
+                currencySelector.value = "INR";
+                currencySelector.addEventListener('change', updatePrices);
             }
-        });
 
+            if (searchForm) {
+                searchForm.addEventListener('submit', (e) => e.preventDefault());
+            }
+            if (searchBar) {
+                searchBar.addEventListener('input', filterEbooks);
+            }
+
+            if (genreFilters) {
+                genreFilters.addEventListener('click', (e) => {
+                    if (e.target.classList.contains('genre-btn')) {
+                        genreFilters.querySelector('.active').classList.remove('active');
+                        e.target.classList.add('active');
+                        activeGenre = e.target.dataset.genre;
+                        filterEbooks();
+                    }
+                });
+            }
+
+            if (ebookGrid) {
+                ebookGrid.addEventListener('click', (e) => {
+                    if (e.target.classList.contains('buy-now-btn')) {
+                        const button = e.target;
+                        const bookData = {
+                            title: button.dataset.title,
+                            currentPrice: button.dataset.currentPrice,
+                            fileName: button.dataset.fileName,
+                            icon: button.dataset.icon,
+                        };
+                        showModal(bookData);
+                    }
+                });
+            }
+
+            if (cancelBtn) {
+                cancelBtn.addEventListener('click', hideModal);
+            }
+
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+
+            if (newsletterForm) {
+                newsletterForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const emailInput = document.getElementById('newsletter-email');
+                    const feedbackEl = document.getElementById('newsletter-feedback');
+                    if (emailInput && feedbackEl) {
+                        feedbackEl.textContent = 'Thank you for subscribing!';
+                        feedbackEl.classList.add('text-green-400');
+                        emailInput.value = '';
+                        setTimeout(() => {
+                            feedbackEl.textContent = '';
+                            feedbackEl.classList.remove('text-green-400');
+                        }, 3000);
+                    }
+                });
+            }
+
+            // Initial fetch of exchange rates
+            fetchExchangeRates();
+        });
     </script>
 </body>
 </html>
