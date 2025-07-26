@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Wisdom Circle Group (WCG)</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome for social icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* Custom styles from homepage */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* slate-50 */
+        }
+
+        .text-gradient {
+            background: linear-gradient(90deg, #4f46e5 0%, #a855f7 50%, #ec4899 100%);
+            -webkit-background-clip: text;
+            -moz-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        #navbar .desktop-link {
+            position: relative;
+            padding-bottom: 8px;
+        }
+        #navbar .desktop-link::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(90deg, #4f46e5, #a855f7, #ec4899);
+            transform: scaleX(0);
+            transform-origin: bottom right;
+            transition: transform 0.4s cubic-bezier(0.86, 0, 0.07, 1);
+        }
+        #navbar .desktop-link:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+
+        /* FAQ Accordion Styles */
+        .faq-question {
+            transition: background-color 0.3s ease;
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.25, 0.1, 0.25, 1.0), padding 0.5s cubic-bezier(0.25, 0.1, 0.25, 1.0);
+            padding: 0 1.5rem;
+        }
+        .faq-item.active .faq-answer {
+            max-height: 200px; /* Adjust as needed for content length */
+            padding: 1rem 1.5rem 1.5rem;
+        }
+        .faq-item.active .faq-question {
+            background-color: #eef2ff; /* indigo-50 */
+        }
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+        .faq-icon {
+            transition: transform 0.3s ease;
+        }
+    </style>
+</head>
+<body class="text-slate-800">
+
+    <!-- Navigation Bar -->
+    <nav id="navbar" class="bg-white/85 backdrop-blur-md shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-3">
+            <div class="flex items-center justify-between">
+                <div class="text-2xl font-bold text-slate-800">
+                    <a href="index.html">WCG</a>
+                </div>
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="desktop-link text-slate-600 hover:text-indigo-600 transition-colors font-medium">Home</a>
+                    <a href="store.html" class="desktop-link text-slate-600 hover:text-indigo-600 transition-colors font-medium">E-books</a>
+                    <a href="blog.html" class="desktop-link text-slate-600 hover:text-indigo-600 transition-colors font-medium">Blog</a>
+                    <a href="index.html#team" class="desktop-link text-slate-600 hover:text-indigo-600 transition-colors font-medium">Our Team</a>
+                </div>
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="text-slate-800 focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden px-6 pt-2 pb-4 bg-white/95 backdrop-blur-md">
+            <a href="index.html" class="block py-2 text-slate-600 hover:text-indigo-600">Home</a>
+            <a href="store.html" class="block py-2 text-slate-600 hover:text-indigo-600">E-books</a>
+            <a href="blog.html" class="block py-2 text-slate-600 hover:text-indigo-600">Blog</a>
+            <a href="index.html#team" class="block py-2 text-slate-600 hover:text-indigo-600">Our Team</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="py-16 sm:py-24">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h1 class="text-4xl md:text-5xl font-extrabold mb-4 text-gradient">Frequently Asked Questions</h1>
+                <p class="text-lg text-slate-600 max-w-2xl mx-auto">Have questions? We've got answers. If you can't find what you're looking for, feel free to contact us.</p>
+            </div>
+
+            <!-- FAQ Accordion -->
+            <div id="faq-accordion" class="max-w-3xl mx-auto space-y-4">
+                <!-- FAQ Item 1 -->
+                <div class="faq-item bg-white rounded-lg shadow-md overflow-hidden">
+                    <button class="faq-question w-full text-left p-6 flex justify-between items-center">
+                        <span class="text-lg font-semibold text-slate-800">What is Wisdom Circle Group (WCG)?</span>
+                        <i class="fas fa-chevron-down faq-icon text-indigo-500"></i>
+                    </button>
+                    <div class="faq-answer text-slate-600">
+                        <p>Wisdom Circle Group is a community and platform dedicated to fostering shared knowledge, growth, and collaboration. We provide high-quality content through our blog and e-books on topics like technology, personal development, and community building.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="faq-item bg-white rounded-lg shadow-md overflow-hidden">
+                    <button class="faq-question w-full text-left p-6 flex justify-between items-center">
+                        <span class="text-lg font-semibold text-slate-800">How do I purchase an e-book?</span>
+                        <i class="fas fa-chevron-down faq-icon text-indigo-500"></i>
+                    </button>
+                    <div class="faq-answer text-slate-600">
+                        <p>Simply visit our <a href="store.html" class="text-indigo-600 underline">E-book Store</a>, choose your preferred currency, and click the "Buy Now" button on any book you're interested in. A pop-up will guide you through confirming your purchase, and the e-book will be downloaded to your device immediately after confirmation.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="faq-item bg-white rounded-lg shadow-md overflow-hidden">
+                    <button class="faq-question w-full text-left p-6 flex justify-between items-center">
+                        <span class="text-lg font-semibold text-slate-800">What is your refund policy for e-books?</span>
+                        <i class="fas fa-chevron-down faq-icon text-indigo-500"></i>
+                    </button>
+                    <div class="faq-answer text-slate-600">
+                        <p>Due to the digital nature of our e-books, all sales are final and non-refundable. We encourage you to read the descriptions carefully before purchasing. If you encounter a technical issue with your download, please contact our support team for assistance.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="faq-item bg-white rounded-lg shadow-md overflow-hidden">
+                    <button class="faq-question w-full text-left p-6 flex justify-between items-center">
+                        <span class="text-lg font-semibold text-slate-800">In what format are the e-books provided?</span>
+                        <i class="fas fa-chevron-down faq-icon text-indigo-500"></i>
+                    </button>
+                    <div class="faq-answer text-slate-600">
+                        <p>Our e-books are provided in PDF format, which is compatible with most devices, including computers, tablets, and smartphones. You will not need any special software other than a standard PDF reader.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 5 -->
+                <div class="faq-item bg-white rounded-lg shadow-md overflow-hidden">
+                    <button class="faq-question w-full text-left p-6 flex justify-between items-center">
+                        <span class="text-lg font-semibold text-slate-800">How can I re-download an e-book I've already purchased?</span>
+                        <i class="fas fa-chevron-down faq-icon text-indigo-500"></i>
+                    </button>
+                    <div class="faq-answer text-slate-600">
+                        <p>After your purchase, you should receive an email with a download link. Please save this email for your records. If you lose the file and the link, please contact us with your purchase details (email address and date of purchase), and we will be happy to resend the link to you.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 6 -->
+                <div class="faq-item bg-white rounded-lg shadow-md overflow-hidden">
+                    <button class="faq-question w-full text-left p-6 flex justify-between items-center">
+                        <span class="text-lg font-semibold text-slate-800">Can I contribute to the WCG blog?</span>
+                        <i class="fas fa-chevron-down faq-icon text-indigo-500"></i>
+                    </button>
+                    <div class="faq-answer text-slate-600">
+                        <p>We are always looking for passionate writers and experts to share their insights with our community. Please reach out to us through our contact information in the footer with your ideas or a sample of your work, and our editorial team will get in touch with you.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 7 -->
+                <div class="faq-item bg-white rounded-lg shadow-md overflow-hidden">
+                    <button class="faq-question w-full text-left p-6 flex justify-between items-center">
+                        <span class="text-lg font-semibold text-slate-800">Who is B. Krishna?</span>
+                        <i class="fas fa-chevron-down faq-icon text-indigo-500"></i>
+                    </button>
+                    <div class="faq-answer text-slate-600">
+                        <p>B. Krishna is the lead author and strategist behind Wisdom Circle Group. With a passion for technology, sustainability, and personal growth, B. Krishna authors most of the insightful e-books and blog posts available on our platform.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-800 text-slate-300 pt-16 pb-8">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+                <!-- About WCG -->
+                <div class="col-span-1">
+                    <h3 class="text-xl font-bold text-white mb-4">Wisdom Circle Group</h3>
+                    <p class="text-sm">Fostering a community of shared knowledge, growth, and collaboration for a brighter future.</p>
+                </div>
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-lg font-semibold text-white mb-4">Quick Links</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="index.html" class="hover:text-white transition-colors">Home</a></li>
+                        <li><a href="store.html" class="hover:text-white transition-colors">E-books</a></li>
+                        <li><a href="blog.html" class="hover:text-white transition-colors">Blog</a></li>
+                        <li><a href="privacy.html" class="hover:text-white transition-colors">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="text-lg font-semibold text-white mb-4">Contact Us</h3>
+                    <address class="not-italic space-y-2 text-sm">
+                        <p><i class="fas fa-map-marker-alt mr-2 w-4 text-center"></i>123 Wisdom Lane, Knowledge City, 500081</p>
+                        <p><i class="fas fa-phone mr-2 w-4 text-center"></i>(123) 456-7890</p>
+                        <p><i class="fas fa-envelope mr-2 w-4 text-center"></i><a href="mailto:info@wcg.com" class="hover:text-white transition-colors">info@wcg.com</a></p>
+                    </address>
+                </div>
+                <!-- Newsletter -->
+                <div>
+                    <h3 class="text-lg font-semibold text-white mb-4">Join Our Newsletter</h3>
+                    <p class="text-sm mb-3">Get the latest updates and insights from our community.</p>
+                    <form id="newsletter-form" class="flex">
+                        <input type="email" id="newsletter-email" placeholder="Your email" class="w-full rounded-l-md px-3 py-2 text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
+                        <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-r-md transition-colors">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                    <p id="newsletter-feedback" class="text-xs mt-2 h-4"></p>
+                </div>
+            </div>
+            <div class="border-t border-slate-700 pt-8 flex flex-col sm:flex-row justify-between items-center">
+                <p class="text-sm text-center sm:text-left mb-4 sm:mb-0">&copy; 2024 Wisdom Circle Group. All Rights Reserved.</p>
+                <div class="flex space-x-4">
+                    <a href="#" class="hover:text-white transition-colors"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="hover:text-white transition-colors"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="hover:text-white transition-colors"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="hover:text-white transition-colors"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // --- Mobile Menu ---
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if(mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+
+            // --- FAQ Accordion ---
+            const faqAccordion = document.getElementById('faq-accordion');
+            if (faqAccordion) {
+                faqAccordion.addEventListener('click', (e) => {
+                    const questionButton = e.target.closest('.faq-question');
+                    if (questionButton) {
+                        const faqItem = questionButton.parentElement;
+                        const wasActive = faqItem.classList.contains('active');
+                        
+                        // Close all other items
+                        document.querySelectorAll('.faq-item').forEach(item => {
+                            item.classList.remove('active');
+                        });
+
+                        // Toggle the clicked item only if it wasn't already active
+                        if (!wasActive) {
+                            faqItem.classList.add('active');
+                        }
+                    }
+                });
+            }
+
+            // --- Newsletter Form ---
+            const newsletterForm = document.getElementById('newsletter-form');
+            if(newsletterForm) {
+                newsletterForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const emailInput = document.getElementById('newsletter-email');
+                    const feedbackEl = document.getElementById('newsletter-feedback');
+                    if (emailInput && feedbackEl) {
+                        feedbackEl.textContent = 'Thank you for subscribing!';
+                        feedbackEl.classList.add('text-green-400');
+                        emailInput.value = '';
+                        setTimeout(() => {
+                            feedbackEl.textContent = '';
+                            feedbackEl.classList.remove('text-green-400');
+                        }, 3000);
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
